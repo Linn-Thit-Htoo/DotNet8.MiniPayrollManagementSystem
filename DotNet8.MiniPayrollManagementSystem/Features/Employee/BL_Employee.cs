@@ -44,4 +44,12 @@ public class BL_Employee
 
         return await _dA_Employee.CreateEmployeeAsync(requestModel);
     }
+
+    public async Task<int> DeleteEmployeeAsync(long id)
+    {
+        if (id <= 0)
+            throw new Exception("Id is invalid.");
+
+        return await _dA_Employee.DeleteEmployeeAsync(id);
+    }
 }

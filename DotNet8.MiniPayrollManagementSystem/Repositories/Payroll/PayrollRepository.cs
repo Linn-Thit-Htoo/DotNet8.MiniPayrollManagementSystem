@@ -34,5 +34,10 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll
                 throw new Exception(ex.Message);
             }
         }
+
+        public Task<PayrollListResponseModel> GetPayrollByEmployeeAsync(string employeeCode, string fromDate, string toDate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -65,4 +65,23 @@ public class EmployeeRepository : IEmployeeRepository
             throw new Exception(ex.Message);
         }
     }
+
+    public async Task<int> DeleteEmployeeAsync(long id)
+    {
+        try
+        {
+            var item = await _appDbContext.TblEmployees
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.EmployeeId == id)
+                ?? throw new Exception("No data found.");
+
+            item.IsActive = false;
+            _appDbContext.Entry(item).State = EntityState.Modified;
+            return await _appDbContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 }
