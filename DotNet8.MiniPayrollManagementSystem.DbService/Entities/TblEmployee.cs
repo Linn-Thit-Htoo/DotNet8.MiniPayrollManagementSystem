@@ -1,4 +1,7 @@
-﻿namespace DotNet8.MiniPayrollManagementSystem.DbService.Entities;
+﻿using System;
+using System.Collections.Generic;
+
+namespace DotNet8.MiniPayrollManagementSystem.DbService.Entities;
 
 public partial class TblEmployee
 {

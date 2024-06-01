@@ -1,5 +1,6 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
-using DotNet8.MiniPayrollManagementSystem.Queries.Employee.GetEmployeeListQuery;
+﻿using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
+using DotNet8.MiniPayrollManagementSystem.Api.Queries.Employee.GetEmployeeListQuery;
+using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
 using MediatR;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
@@ -20,6 +21,19 @@ public class DA_Employee
             var query = new GetEmployeeListQuery();
             var lst = await _mediator.Send(query);
             return lst;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task<int> CreateEmployeeAsync(EmployeeRequestModel requestModel)
+    {
+        try
+        {
+            var command = new CreateEmployeeCommand() { EmployeeRequestModel = requestModel };
+            return await _mediator.Send(command);
         }
         catch (Exception ex)
         {

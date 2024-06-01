@@ -6,7 +6,7 @@ public class EmployeeModel
     public string EmployeeCode { get; set; } = null!;
     public string EmployeeName { get; set; } = null!;
     public string Email { get; set; } = null!;
-    public string PhonNumber { get; set; } = null!;
+    public string PhoneNumber { get; set; } = null!;
     public string HireDate { get; set; } = null!;
     public string Position { get; set; } = null!;
     public decimal Salary { get; set; }

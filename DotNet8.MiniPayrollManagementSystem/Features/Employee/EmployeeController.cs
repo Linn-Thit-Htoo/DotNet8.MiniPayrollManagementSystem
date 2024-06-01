@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
 
 [Route("api/[controller]")]
 [ApiController]
-public class EmployeeController : ControllerBase
+public class EmployeeController : BaseController
 {
     private readonly BL_Employee _bL_Employee;
 
@@ -19,11 +20,25 @@ public class EmployeeController : ControllerBase
         try
         {
             var lst = await _bL_Employee.GetEmployeeListAsync();
-            return Ok(lst);
+            return Content(lst);
         }
         catch (Exception ex)
         {
-            throw new Exception(ex.Message);
+            return InternalServerError(ex);
+        }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateEmployee([FromBody] EmployeeRequestModel requestModel)
+    {
+        try
+        {
+            int result = await _bL_Employee.CreateEmployeeAsync(requestModel);
+            return result > 0 ? Created("Employee Created.") : BadRequest("Creating Fail.");
+        }
+        catch (Exception ex)
+        {
+            return InternalServerError(ex);
         }
     }
 }

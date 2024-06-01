@@ -17,10 +17,7 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<TblEmployee> TblEmployees { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.;Database=MiniPayrollManagementSystem;User ID=sa;Password=sasa@123;TrustServerCertificate=True;");
-
+    public virtual DbSet<TblPayroll> TblPayrolls { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TblEmployee>(entity =>
@@ -36,6 +33,24 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.PhoneNumber).HasMaxLength(50);
             entity.Property(e => e.Position).HasMaxLength(50);
             entity.Property(e => e.Salary).HasColumnType("decimal(18, 2)");
+        });
+
+        modelBuilder.Entity<TblPayroll>(entity =>
+        {
+            entity.HasKey(e => e.PId);
+
+            entity.ToTable("Tbl_Payroll");
+
+            entity.Property(e => e.PId)
+                .HasMaxLength(50)
+                .HasColumnName("PId");
+            entity.Property(e => e.BonusAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.DeductionAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.EmployeeName).HasMaxLength(50);
+            entity.Property(e => e.GrossPay).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.NetPay).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.PayDate).HasMaxLength(50);
+            entity.Property(e => e.TaxAmount).HasColumnType("decimal(18, 2)");
         });
 
         OnModelCreatingPartial(modelBuilder);

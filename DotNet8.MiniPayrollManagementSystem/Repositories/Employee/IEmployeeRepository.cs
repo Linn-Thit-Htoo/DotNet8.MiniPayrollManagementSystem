@@ -5,4 +5,5 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
 public interface IEmployeeRepository
 {
     Task<EmployeeListResponseModel> GetEmployeeListAsync();
+    Task<int> CreateEmployeeAsync(EmployeeRequestModel requestModel);
 }

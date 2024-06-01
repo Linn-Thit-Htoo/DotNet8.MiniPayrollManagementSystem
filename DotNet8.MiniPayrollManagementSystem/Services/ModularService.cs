@@ -1,5 +1,9 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
+using DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
 using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
+using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
+using DotNet8.MiniPayrollManagementSystem.Api.Services.Employee;
+using DotNet8.MiniPayrollManagementSystem.Api.Validators.Employee;
 using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +19,8 @@ public static class ModularService
         services.AddBusinessLogicServices();
         services.AddRepositoryServices();
         services.AddJsonServices();
+        services.AddCustomServices();
+        services.AddValidatorService();
         return services;
     }
 
@@ -23,6 +29,7 @@ public static class ModularService
     private static IServiceCollection AddBusinessLogicServices(this IServiceCollection services)
     {
         services.AddScoped<BL_Employee>();
+        services.AddScoped<BL_Payroll>();
         return services;
     }
 
@@ -33,6 +40,7 @@ public static class ModularService
     private static IServiceCollection AddDataAccessServices(this IServiceCollection services)
     {
         services.AddScoped<DA_Employee>();
+        services.AddScoped<DA_Payroll>();
         return services;
     }
 
@@ -57,6 +65,7 @@ public static class ModularService
     private static IServiceCollection AddRepositoryServices(this IServiceCollection services)
     {
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        services.AddScoped<IPayrollRepository, PayrollRepository>();
         return services;
     }
 
@@ -84,4 +93,16 @@ public static class ModularService
     }
 
     #endregion
+
+    private static IServiceCollection AddCustomServices(this IServiceCollection services)
+    {
+        services.AddScoped<GenerateEmployeeCodeService>();
+        return services;
+    }
+
+    private static IServiceCollection AddValidatorService(this IServiceCollection services)
+    {
+        services.AddScoped<EmployeeValidator>();
+        return services;
+    }
 }

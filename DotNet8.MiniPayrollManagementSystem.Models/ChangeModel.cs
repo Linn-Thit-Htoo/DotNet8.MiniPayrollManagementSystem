@@ -1,5 +1,7 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
+using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
+using Microsoft.AspNetCore.Authentication;
 
 namespace DotNet8.MiniPayrollManagementSystem.Models;
 
@@ -15,9 +17,24 @@ public static class ChangeModel
             EmployeeName = dataModel.EmployeeName,
             HireDate = dataModel.HireDate,
             IsActive = dataModel.IsActive,
-            PhonNumber = dataModel.PhonNumber,
+            PhoneNumber = dataModel.PhoneNumber,
             Position = dataModel.Position,
             Salary = dataModel.Salary
+        };
+    }
+
+    public static PayrollModel Change(this TblPayroll dataModel)
+    {
+        return new PayrollModel
+        {
+            PId = dataModel.PId,
+            BonusAmount = dataModel.BonusAmount,
+            DeductionAmount = dataModel.DeductionAmount,
+            EmployeeName = dataModel.EmployeeName,
+            GrossPay = dataModel.GrossPay,
+            NetPay = dataModel.NetPay,
+            PayDate = dataModel.PayDate,
+            TaxAmount = dataModel.TaxAmount
         };
     }
 }
