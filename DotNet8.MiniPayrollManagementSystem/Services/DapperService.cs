@@ -61,6 +61,9 @@ public class DapperService
 
     #endregion
 
+    #region Execute
+
+    #endregion
     public int Execute(string query, object? parameters, CommandType commandType = CommandType.Text)
     {
         using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
