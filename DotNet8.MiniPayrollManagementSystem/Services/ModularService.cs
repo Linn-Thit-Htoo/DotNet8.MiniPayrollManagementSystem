@@ -72,6 +72,7 @@ public static class ModularService
         });
         return services;
     }
+
     #endregion
 
     private static IServiceCollection AddMediatRService(this IServiceCollection services)
