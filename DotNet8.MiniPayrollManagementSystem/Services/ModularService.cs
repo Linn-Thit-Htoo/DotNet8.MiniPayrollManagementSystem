@@ -3,7 +3,7 @@ using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
 using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DotNet8.MiniPayrollManagementSystem.Services
+namespace DotNet8.MiniPayrollManagementSystem.Api.Services
 {
     public static class ModularService
     {

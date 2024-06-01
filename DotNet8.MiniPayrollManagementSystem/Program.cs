@@ -1,4 +1,4 @@
-using DotNet8.MiniPayrollManagementSystem.Services;
+using DotNet8.MiniPayrollManagementSystem.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
