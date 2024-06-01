@@ -47,12 +47,12 @@ public class EmployeeRepository : IEmployeeRepository
         {
             var dataModel = new TblEmployee
             {
-                EmployeeName = requestModel.EmployeeName,
+                EmployeeName = requestModel.EmployeeName!,
                 EmployeeCode = await _generateEmployeeCodeService.GenerateEmployeeCodeAsync(),
-                Email = requestModel.Email,
-                PhoneNumber = requestModel.PhoneNumber,
-                HireDate = requestModel.HireDate,
-                Position = requestModel.Position,
+                Email = requestModel.Email!,
+                PhoneNumber = requestModel.PhoneNumber!,
+                HireDate = requestModel.HireDate!,
+                Position = requestModel.Position!,
                 Salary = requestModel.Salary,
                 IsActive = true
             };
