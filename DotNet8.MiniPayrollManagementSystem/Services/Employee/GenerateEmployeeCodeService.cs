@@ -1,44 +1,43 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DotNet8.MiniPayrollManagementSystem.Api.Services.Employee
+namespace DotNet8.MiniPayrollManagementSystem.Api.Services.Employee;
+
+public class GenerateEmployeeCodeService
 {
-    public class GenerateEmployeeCodeService
+    private readonly AppDbContext _appDbContext;
+
+    public GenerateEmployeeCodeService(AppDbContext appDbContext)
     {
-        private readonly AppDbContext _appDbContext;
+        _appDbContext = appDbContext;
+    }
 
-        public GenerateEmployeeCodeService(AppDbContext appDbContext)
+    public async Task<string> GenerateEmployeeCodeAsync()
+    {
+        try
         {
-            _appDbContext = appDbContext;
+            var latestEmployeeCode = await _appDbContext.TblEmployees
+                .AsNoTracking()
+                .OrderByDescending(x => x.EmployeeCode)
+                .Select(x => x.EmployeeCode)
+                .FirstOrDefaultAsync();
+
+            string newEmployeeCode = string.Empty;
+            if (string.IsNullOrEmpty(latestEmployeeCode) || latestEmployeeCode is null)
+            {
+                newEmployeeCode = "E00001";
+            }
+            else
+            {
+                int numericPart = int.Parse(latestEmployeeCode!.Substring(1)) + 1;
+                newEmployeeCode = $"E{numericPart:D5}";
+            }
+
+            return newEmployeeCode;
         }
-
-        public async Task<string> GenerateEmployeeCodeAsync()
+        catch (Exception ex)
         {
-            try
-            {
-                var latestEmployeeCode = await _appDbContext.TblEmployees
-                    .AsNoTracking()
-                    .OrderByDescending(x => x.EmployeeCode)
-                    .Select(x => x.EmployeeCode)
-                    .FirstOrDefaultAsync();
-
-                string newEmployeeCode = string.Empty;
-                if (string.IsNullOrEmpty(latestEmployeeCode) || latestEmployeeCode is null)
-                {
-                    newEmployeeCode = "E00001";
-                }
-                else
-                {
-                    int numericPart = int.Parse(latestEmployeeCode!.Substring(1)) + 1;
-                    newEmployeeCode = $"E{numericPart:D5}";
-                }
-
-                return newEmployeeCode;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            throw new Exception(ex.Message);
         }
     }
 }
