@@ -52,6 +52,9 @@ public static class ModularService
 
     #endregion
 
+    #region Add Repository Services
+
+    #endregion
     private static IServiceCollection AddRepositoryServices(this IServiceCollection services)
     {
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
