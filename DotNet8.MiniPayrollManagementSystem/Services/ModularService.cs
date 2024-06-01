@@ -38,7 +38,7 @@ public static class ModularService
 
     #endregion
 
-    #region MyRegion
+    #region Add Db Context Services
 
     #endregion
     private static IServiceCollection AddDbContextServices(this IServiceCollection services, WebApplicationBuilder builder)
