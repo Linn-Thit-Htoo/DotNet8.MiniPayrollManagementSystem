@@ -62,6 +62,9 @@ public static class ModularService
 
     #endregion
 
+    #region Add Json Services
+
+    #endregion
     private static IServiceCollection AddJsonServices(this IServiceCollection services)
     {
         services.AddControllers().AddJsonOptions(opt =>
