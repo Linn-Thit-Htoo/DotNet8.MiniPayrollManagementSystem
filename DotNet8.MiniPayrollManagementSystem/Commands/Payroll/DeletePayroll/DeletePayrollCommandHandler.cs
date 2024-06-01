@@ -1,20 +1,19 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
 using MediatR;
 
-namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.DeletePayroll
+namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.DeletePayroll;
+
+public class DeletePayrollCommandHandler : IRequestHandler<DeletePayrollCommand, int>
 {
-    public class DeletePayrollCommandHandler : IRequestHandler<DeletePayrollCommand, int>
+    private readonly IPayrollRepository _payrollRepository;
+
+    public DeletePayrollCommandHandler(IPayrollRepository payrollRepository)
     {
-        private readonly IPayrollRepository _payrollRepository;
+        _payrollRepository = payrollRepository;
+    }
 
-        public DeletePayrollCommandHandler(IPayrollRepository payrollRepository)
-        {
-            _payrollRepository = payrollRepository;
-        }
-
-        public async Task<int> Handle(DeletePayrollCommand request, CancellationToken cancellationToken)
-        {
-            return await _payrollRepository.DeletePayrollAsync(request.PId);
-        }
+    public async Task<int> Handle(DeletePayrollCommand request, CancellationToken cancellationToken)
+    {
+        return await _payrollRepository.DeletePayrollAsync(request.PId);
     }
 }
