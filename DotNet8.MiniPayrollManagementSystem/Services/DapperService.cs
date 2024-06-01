@@ -46,6 +46,7 @@ public class DapperService
 
         return item!;
     }
+
     #endregion
 
     public async Task<T> QueryFirstOrDefaultAsync<T>(string query, object? parameters, CommandType commandType = CommandType.Text)
