@@ -1,6 +1,7 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
+﻿using DotNet8.MiniPayrollManagementSystem.Features.Employee;
+using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
 
-namespace DotNet8.MiniPayrollManagementSystem.Features.Employee
+namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Employee
 {
     public class BL_Employee
     {

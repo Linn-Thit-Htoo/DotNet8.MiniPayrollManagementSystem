@@ -1,4 +1,5 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Queries.Employee.GetEmployeeListQuery;
+﻿using DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
+using DotNet8.MiniPayrollManagementSystem.Queries.Employee.GetEmployeeListQuery;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
