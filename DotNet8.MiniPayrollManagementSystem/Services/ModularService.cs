@@ -35,6 +35,7 @@ public static class ModularService
         services.AddScoped<DA_Employee>();
         return services;
     }
+
     #endregion
 
     private static IServiceCollection AddDbContextServices(this IServiceCollection services, WebApplicationBuilder builder)
