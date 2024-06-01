@@ -1,10 +1,9 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
 using MediatR;
 
-namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee
+namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
+
+public class CreateEmployeeCommand : IRequest<int>
 {
-    public class CreateEmployeeCommand : IRequest<int>
-    {
-        public EmployeeRequestModel EmployeeRequestModel { get; set; }
-    }
+    public EmployeeRequestModel EmployeeRequestModel { get; set; }
 }
