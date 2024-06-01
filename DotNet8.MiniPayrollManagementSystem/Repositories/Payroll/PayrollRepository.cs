@@ -68,13 +68,6 @@ public class PayrollRepository : IPayrollRepository
             // both null
             if (string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
             {
-                //                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive
-                //DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
-                //FROM Tbl_Payroll
-                //INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
-                //WHERE Tbl_Payroll.IsActive = @IsActive
-                //ORDER BY PId DESC
-                //";
                 lst = await _dapperService
                     .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByEmployeeCode"
                     , new { EmployeeCode = employeeCode},
