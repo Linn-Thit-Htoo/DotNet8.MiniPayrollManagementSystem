@@ -61,7 +61,6 @@ public class PayrollRepository : IPayrollRepository
             #region To Date
 
             #endregion
-            // only to date
             if (!string.IsNullOrEmpty(toDate) && string.IsNullOrEmpty(fromDate))
             {
                 var parameters = new
