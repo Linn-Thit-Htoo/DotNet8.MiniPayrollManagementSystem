@@ -25,7 +25,6 @@ public class PayrollRepository : IPayrollRepository
             string query = string.Empty;
             IEnumerable<PayrollResponseModel>? lst = null;
 
-            // both from date & to date
             #region From Date & To Date
 
             if (!string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
@@ -45,7 +44,6 @@ public class PayrollRepository : IPayrollRepository
 
             #region From Date
 
-            // only from date
             if (!string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
             {
                 var parameters = new
