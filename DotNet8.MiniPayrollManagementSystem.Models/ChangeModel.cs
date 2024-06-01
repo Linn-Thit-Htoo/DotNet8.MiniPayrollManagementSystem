@@ -28,7 +28,6 @@ public static class ChangeModel
 
     #region Payroll
 
-    #endregion
     public static PayrollModel Change(this TblPayroll dataModel)
     {
         return new PayrollModel
@@ -60,4 +59,5 @@ public static class ChangeModel
             IsActive = true
         };
     }
+    #endregion
 }
