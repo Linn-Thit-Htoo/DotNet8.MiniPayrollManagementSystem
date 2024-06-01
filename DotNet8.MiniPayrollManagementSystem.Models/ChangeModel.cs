@@ -26,6 +26,9 @@ public static class ChangeModel
 
     #endregion
 
+    #region Payroll
+
+    #endregion
     public static PayrollModel Change(this TblPayroll dataModel)
     {
         return new PayrollModel
