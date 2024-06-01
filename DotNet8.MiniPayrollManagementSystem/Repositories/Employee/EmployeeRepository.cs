@@ -4,39 +4,38 @@ using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
 using DotNet8.MiniPayrollManagementSystem.Repositories.Employee;
 using Microsoft.EntityFrameworkCore;
 
-namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee
+namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
+
+public class EmployeeRepository : IEmployeeRepository
 {
-    public class EmployeeRepository : IEmployeeRepository
+    private readonly AppDbContext _appDbContext;
+
+    public EmployeeRepository(AppDbContext appDbContext)
     {
-        private readonly AppDbContext _appDbContext;
+        _appDbContext = appDbContext;
+    }
 
-        public EmployeeRepository(AppDbContext appDbContext)
+    public async Task<EmployeeListResponseModel> GetEmployeeListAsync()
+    {
+        try
         {
-            _appDbContext = appDbContext;
+            var employees = await _appDbContext.TblEmployees
+                .AsNoTracking()
+                .OrderByDescending(x => x.EmployeeId)
+                .Where(x => x.IsActive)
+                .ToListAsync();
+
+            var lst = employees.Select(x => x.Change()).ToList();
+            var responseModel = new EmployeeListResponseModel()
+            {
+                DataLst = lst
+            };
+
+            return responseModel;
         }
-
-        public async Task<EmployeeListResponseModel> GetEmployeeListAsync()
+        catch (Exception ex)
         {
-            try
-            {
-                var employees = await _appDbContext.TblEmployees
-                    .AsNoTracking()
-                    .OrderByDescending(x => x.EmployeeId)
-                    .Where(x => x.IsActive)
-                    .ToListAsync();
-
-                var lst = employees.Select(x => x.Change()).ToList();
-                var responseModel = new EmployeeListResponseModel()
-                {
-                    DataLst = lst
-                };
-
-                return responseModel;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            throw new Exception(ex.Message);
         }
     }
 }
