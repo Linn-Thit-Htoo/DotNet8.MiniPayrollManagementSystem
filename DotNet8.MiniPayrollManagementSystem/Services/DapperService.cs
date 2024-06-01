@@ -34,6 +34,7 @@ public class DapperService
 
         return lst;
     }
+
     #endregion
 
     public T QueryFirstOrDefault<T>(string query, object? parameters, CommandType commandType = CommandType.Text)
