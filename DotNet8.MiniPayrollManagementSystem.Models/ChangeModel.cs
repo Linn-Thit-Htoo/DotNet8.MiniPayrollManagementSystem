@@ -23,6 +23,7 @@ public static class ChangeModel
             Salary = dataModel.Salary
         };
     }
+
     #endregion
 
     public static PayrollModel Change(this TblPayroll dataModel)
