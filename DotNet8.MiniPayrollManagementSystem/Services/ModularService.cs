@@ -28,6 +28,9 @@ public static class ModularService
 
     #endregion
 
+    #region Add Data Access Services
+
+    #endregion
     private static IServiceCollection AddDataAccessServices(this IServiceCollection services)
     {
         services.AddScoped<DA_Employee>();
