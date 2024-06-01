@@ -71,6 +71,9 @@ public class DapperService
 
     #endregion
 
+    #region Execute Async
+
+    #endregion
     public async Task<int> ExecuteAsync(string query, object? parameters, CommandType commandType = CommandType.Text)
     {
         using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
