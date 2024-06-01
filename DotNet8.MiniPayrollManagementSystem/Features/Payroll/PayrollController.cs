@@ -1,7 +1,5 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
 {
