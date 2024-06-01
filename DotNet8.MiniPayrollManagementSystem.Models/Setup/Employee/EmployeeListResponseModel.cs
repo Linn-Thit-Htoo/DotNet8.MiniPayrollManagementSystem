@@ -1,7 +1,6 @@
-﻿namespace DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee
+﻿namespace DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
+
+public class EmployeeListResponseModel
 {
-    public class EmployeeListResponseModel
-    {
-        public List<EmployeeModel> DataLst { get; set; }
-    }
+    public List<EmployeeModel> DataLst { get; set; }
 }
