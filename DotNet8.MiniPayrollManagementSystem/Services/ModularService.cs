@@ -82,5 +82,6 @@ public static class ModularService
         services.AddMediatR(cf => cf.RegisterServicesFromAssembly(typeof(Program).Assembly));
         return services;
     }
+
     #endregion
 }
