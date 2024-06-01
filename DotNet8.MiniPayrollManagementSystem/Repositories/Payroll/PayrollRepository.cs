@@ -114,7 +114,7 @@ ORDER BY PId DESC
             {
                 bool doesEmployeeExist = await _appDbContext.TblEmployees
                     .AsNoTracking()
-                    .AnyAsync(x => x.EmployeeName == requestModel.EmployeeName.Trim() && x.IsActive);
+                    .AnyAsync(x => x.EmployeeName == requestModel.EmployeeName!.Trim() && x.IsActive);
                 if (!doesEmployeeExist)
                     throw new Exception("Employee with this name does not exist.");
 
