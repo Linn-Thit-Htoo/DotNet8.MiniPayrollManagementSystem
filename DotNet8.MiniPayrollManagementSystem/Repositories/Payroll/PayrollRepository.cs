@@ -60,7 +60,6 @@ public class PayrollRepository : IPayrollRepository
 
             #region To Date
 
-            #endregion
             if (!string.IsNullOrEmpty(toDate) && string.IsNullOrEmpty(fromDate))
             {
                 var parameters = new
@@ -72,6 +71,7 @@ public class PayrollRepository : IPayrollRepository
                    .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByToDateWithEmployeeCode", parameters,
                    commandType: CommandType.StoredProcedure);
             }
+            #endregion
 
             // both null
             if (string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
