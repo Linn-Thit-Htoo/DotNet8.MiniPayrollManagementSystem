@@ -1,8 +1,6 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Validators.Payroll;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
 using FluentValidation.Results;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.Text;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
