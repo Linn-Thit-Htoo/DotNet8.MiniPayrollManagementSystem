@@ -1,7 +1,6 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
-using Microsoft.AspNetCore.Authentication;
 
 namespace DotNet8.MiniPayrollManagementSystem.Models;
 
