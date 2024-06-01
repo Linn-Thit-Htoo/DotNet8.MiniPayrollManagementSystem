@@ -25,6 +25,7 @@ public static class ModularService
         services.AddScoped<BL_Employee>();
         return services;
     }
+
     #endregion
 
     private static IServiceCollection AddDataAccessServices(this IServiceCollection services)
