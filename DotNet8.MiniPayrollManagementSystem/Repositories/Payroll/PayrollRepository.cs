@@ -4,6 +4,7 @@ using DotNet8.MiniPayrollManagementSystem.Models;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll
 {
@@ -28,22 +29,15 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll
                 // both from date & to date
                 if (!string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
                 {
-                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive,
-DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
-FROM Tbl_Payroll
-INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
-WHERE PayDate >= @FromDate AND PayDate <= @ToDate AND Tbl_Payroll.IsActive = @IsActive
-ORDER BY PId DESC
-";
                     var parameters = new
                     {
                         EmployeeCode = employeeCode,
                         FromDate = fromDate,
-                        ToDate = toDate,
-                        IsActive = true
+                        ToDate = toDate
                     };
                     lst = await _dapperService
-                       .QueryAsync<PayrollResponseModel>(query, parameters);
+                       .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByFromDateToDateWithEmployeeCode", parameters,
+                       commandType: CommandType.StoredProcedure);
                 }
 
                 // only from date
