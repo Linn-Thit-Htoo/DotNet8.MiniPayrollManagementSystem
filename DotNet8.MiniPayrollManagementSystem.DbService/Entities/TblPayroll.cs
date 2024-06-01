@@ -20,4 +20,6 @@ public partial class TblPayroll
     public decimal? BonusAmount { get; set; }
 
     public decimal? TaxAmount { get; set; }
+
+    public bool IsActive { get; set; }
 }

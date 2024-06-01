@@ -34,7 +34,8 @@ public static class ChangeModel
             GrossPay = dataModel.GrossPay,
             NetPay = dataModel.NetPay,
             PayDate = dataModel.PayDate,
-            TaxAmount = dataModel.TaxAmount
+            TaxAmount = dataModel.TaxAmount,
+            IsAcitve = dataModel.IsActive
         };
     }
 
@@ -49,7 +50,8 @@ public static class ChangeModel
             GrossPay = requestModel.GrossPay,
             NetPay = requestModel.NetPay,
             PayDate = requestModel.PayDate,
-            TaxAmount = requestModel.TaxAmount
+            TaxAmount = requestModel.TaxAmount,
+            IsActive = true
         };
     }
 }

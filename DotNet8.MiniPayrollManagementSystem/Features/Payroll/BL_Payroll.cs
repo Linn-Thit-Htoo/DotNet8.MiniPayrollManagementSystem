@@ -39,5 +39,13 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
 
             return await _dA_Payroll.CreatePayrollAsync(requestModel);
         }
+
+        public async Task<int> DeletePayrollAsync(string pId)
+        {
+            if (string.IsNullOrEmpty(pId))
+                throw new Exception("Id cannot be empty.");
+
+            return await _dA_Payroll.DeletePayrollAsync(pId);
+        }
     }
 }

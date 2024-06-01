@@ -43,5 +43,19 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
                 return InternalServerError(ex);
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePayroll(string id)
+        {
+            try
+            {
+                int result = await _bL_Payroll.DeletePayrollAsync(id);
+                return result > 0 ? Accepted("Payroll Deleted.") : BadRequest("Deleting Fail.");
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
     }
 }

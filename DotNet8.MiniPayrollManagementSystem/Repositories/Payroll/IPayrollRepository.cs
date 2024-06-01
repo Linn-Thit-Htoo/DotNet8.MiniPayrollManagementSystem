@@ -6,5 +6,6 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll
     {
         Task<IEnumerable<PayrollResponseModel>> GetPayrollListByEmployeeAsync(string employeeCode, string fromDate, string toDate);
         Task<int> CreatePayrollAsync(PayrollRequestModel requestModel);
+        Task<int> DeletePayrollAsync(string pId);
     }
 }

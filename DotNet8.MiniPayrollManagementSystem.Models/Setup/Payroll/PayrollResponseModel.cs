@@ -17,5 +17,6 @@ namespace DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll
         public decimal BonusAmount { get; set; }
         public decimal TaxAmount { get; set; }
         public string EmployeeCode { get; set; } = null!;
+        public bool IsActive { get; set; }
     }
 }

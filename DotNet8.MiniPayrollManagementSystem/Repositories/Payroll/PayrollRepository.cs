@@ -28,18 +28,19 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll
                 // both from date & to date
                 if (!string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
                 {
-                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay,
+                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive,
 DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
 FROM Tbl_Payroll
 INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
-WHERE PayDate >= @FromDate AND PayDate <= @ToDate
+WHERE PayDate >= @FromDate AND PayDate <= @ToDate AND Tbl_Payroll.IsActive = @IsActive
 ORDER BY PId DESC
 ";
                     var parameters = new
                     {
                         EmployeeCode = employeeCode,
                         FromDate = fromDate,
-                        ToDate = toDate
+                        ToDate = toDate,
+                        IsActive = true
                     };
                     lst = await _dapperService
                        .QueryAsync<PayrollResponseModel>(query, parameters);
@@ -48,17 +49,18 @@ ORDER BY PId DESC
                 // only from date
                 if (!string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
                 {
-                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay,
+                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive
 DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
 FROM Tbl_Payroll
 INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
-WHERE PayDate >= @FromDate
+WHERE PayDate >= @FromDate AND Tbl_Payroll.IsActive = @IsActive
 ORDER BY PId DESC
 ";
                     var parameters = new
                     {
                         EmployeeCode = employeeCode,
                         FromDate = fromDate,
+                        IsActive = true
                     };
                     lst = await _dapperService
                        .QueryAsync<PayrollResponseModel>(query, parameters);
@@ -67,17 +69,18 @@ ORDER BY PId DESC
                 // only to date
                 if (!string.IsNullOrEmpty(toDate) && string.IsNullOrEmpty(fromDate))
                 {
-                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay,
+                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive
 DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
 FROM Tbl_Payroll
 INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
-WHERE PayDate <= @ToDate
+WHERE PayDate <= @ToDate AND Tbl_Payroll.IsActive = @IsActive
 ORDER BY PId DESC
 ";
                     var parameters = new
                     {
                         EmployeeCode = employeeCode,
                         ToDate = toDate,
+                        IsActive = true
                     };
                     lst = await _dapperService
                        .QueryAsync<PayrollResponseModel>(query, parameters);
@@ -86,13 +89,15 @@ ORDER BY PId DESC
                 // both null
                 if (string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
                 {
-                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay,
+                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive
 DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
 FROM Tbl_Payroll
 INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
-ORDER BY PId DESC";
+WHERE Tbl_Payroll.IsActive = @IsActive
+ORDER BY PId DESC
+";
                     lst = await _dapperService
-                        .QueryAsync<PayrollResponseModel>(query, new { EmployeeCode = employeeCode });
+                        .QueryAsync<PayrollResponseModel>(query, new { EmployeeCode = employeeCode, IsActive = true });
                 }
 
                 return lst!;
@@ -114,6 +119,26 @@ ORDER BY PId DESC";
                     throw new Exception("Employee with this name does not exist.");
 
                 await _appDbContext.TblPayrolls.AddAsync(requestModel.Change());
+                return await _appDbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<int> DeletePayrollAsync(string pId)
+        {
+            try
+            {
+                var item = await _appDbContext.TblPayrolls
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.PId == pId)
+                    ?? throw new Exception("No data found.");
+
+                item.IsActive = false;
+                _appDbContext.Entry(item).State = EntityState.Modified;
+
                 return await _appDbContext.SaveChangesAsync();
             }
             catch (Exception ex)
