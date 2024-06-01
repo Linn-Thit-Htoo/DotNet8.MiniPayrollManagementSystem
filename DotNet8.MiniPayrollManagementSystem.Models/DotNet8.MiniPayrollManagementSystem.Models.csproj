@@ -10,4 +10,8 @@
     <Folder Include="Enums\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DotNet8.MiniPayrollManagementSystem.DbService\DotNet8.MiniPayrollManagementSystem.DbService.csproj" />
+  </ItemGroup>
+
 </Project>

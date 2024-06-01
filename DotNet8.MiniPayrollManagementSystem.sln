@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.34929.205
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8.MiniPayrollManagementSystem", "DotNet8.MiniPayrollManagementSystem\DotNet8.MiniPayrollManagementSystem.csproj", "{E95B4399-A5BE-4EC3-8387-9526301D1A85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8.MiniPayrollManagementSystem.Api", "DotNet8.MiniPayrollManagementSystem\DotNet8.MiniPayrollManagementSystem.Api.csproj", "{E95B4399-A5BE-4EC3-8387-9526301D1A85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8.MiniPayrollManagementSystem.Models", "DotNet8.MiniPayrollManagementSystem.Models\DotNet8.MiniPayrollManagementSystem.Models.csproj", "{4E33D06A-590D-4A84-85F6-D19BC5032025}"
 EndProject
