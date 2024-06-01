@@ -58,6 +58,7 @@ public class DapperService
 
         return item!;
     }
+
     #endregion
 
     public int Execute(string query, object? parameters, CommandType commandType = CommandType.Text)
