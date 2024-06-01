@@ -64,7 +64,6 @@ public static class ModularService
 
     #region Add Json Services
 
-    #endregion
     private static IServiceCollection AddJsonServices(this IServiceCollection services)
     {
         services.AddControllers().AddJsonOptions(opt =>
@@ -73,6 +72,7 @@ public static class ModularService
         });
         return services;
     }
+    #endregion
 
     private static IServiceCollection AddMediatRService(this IServiceCollection services)
     {
