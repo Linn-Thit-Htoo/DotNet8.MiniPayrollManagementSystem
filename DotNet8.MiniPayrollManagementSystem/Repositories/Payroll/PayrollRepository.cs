@@ -113,26 +113,6 @@ public class PayrollRepository : IPayrollRepository
         }
     }
 
-    public async Task<int> DeletePayrollAsync(string pId)
-    {
-        try
-        {
-            var item = await _appDbContext.TblPayrolls
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.PId == pId)
-                ?? throw new Exception("No data found.");
-
-            item.IsActive = false;
-            _appDbContext.Entry(item).State = EntityState.Modified;
-
-            return await _appDbContext.SaveChangesAsync();
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
-    }
-
     public async Task<int> UpdatePayrollAsync(PayrollRequestModel requestModel, string pId)
     {
         try
@@ -185,6 +165,26 @@ public class PayrollRepository : IPayrollRepository
 
             #endregion
 
+            _appDbContext.Entry(item).State = EntityState.Modified;
+
+            return await _appDbContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task<int> DeletePayrollAsync(string pId)
+    {
+        try
+        {
+            var item = await _appDbContext.TblPayrolls
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.PId == pId)
+                ?? throw new Exception("No data found.");
+
+            item.IsActive = false;
             _appDbContext.Entry(item).State = EntityState.Modified;
 
             return await _appDbContext.SaveChangesAsync();
