@@ -139,6 +139,9 @@ public class PayrollRepository : IPayrollRepository
                     ?? throw new Exception("Employee does not exist.");
             }
 
+            #region Patch Method Validation
+
+            #endregion
             if (!string.IsNullOrEmpty(requestModel.PayDate))
             {
                 item.PayDate = requestModel.PayDate;
