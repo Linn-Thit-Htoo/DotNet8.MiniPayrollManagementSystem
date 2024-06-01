@@ -2,20 +2,19 @@
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
 using MediatR;
 
-namespace DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery
+namespace DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery;
+
+public class GetPayrollListByEmployeeQueryHandler : IRequestHandler<GetPayrollListByEmployeeQuery, IEnumerable<PayrollResponseModel>>
 {
-    public class GetPayrollListByEmployeeQueryHandler : IRequestHandler<GetPayrollListByEmployeeQuery, IEnumerable<PayrollResponseModel>>
+    private readonly IPayrollRepository _payrollRepository;
+
+    public GetPayrollListByEmployeeQueryHandler(IPayrollRepository payrollRepository)
     {
-        private readonly IPayrollRepository _payrollRepository;
+        _payrollRepository = payrollRepository;
+    }
 
-        public GetPayrollListByEmployeeQueryHandler(IPayrollRepository payrollRepository)
-        {
-            _payrollRepository = payrollRepository;
-        }
-
-        public async Task<IEnumerable<PayrollResponseModel>> Handle(GetPayrollListByEmployeeQuery request, CancellationToken cancellationToken)
-        {
-            return await _payrollRepository.GetPayrollListByEmployeeAsync(request.EmployeeCode, request.FromDate, request.ToDate);
-        }
+    public async Task<IEnumerable<PayrollResponseModel>> Handle(GetPayrollListByEmployeeQuery request, CancellationToken cancellationToken)
+    {
+        return await _payrollRepository.GetPayrollListByEmployeeAsync(request.EmployeeCode, request.FromDate, request.ToDate);
     }
 }
