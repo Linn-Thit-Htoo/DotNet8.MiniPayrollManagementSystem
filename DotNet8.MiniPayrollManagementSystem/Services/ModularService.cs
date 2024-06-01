@@ -59,6 +59,7 @@ public static class ModularService
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         return services;
     }
+
     #endregion
 
     private static IServiceCollection AddJsonServices(this IServiceCollection services)
