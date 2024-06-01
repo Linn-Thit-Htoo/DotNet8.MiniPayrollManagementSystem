@@ -37,6 +37,9 @@ public class DapperService
 
     #endregion
 
+    #region Query First Or Default
+
+    #endregion
     public T QueryFirstOrDefault<T>(string query, object? parameters, CommandType commandType = CommandType.Text)
     {
         using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
