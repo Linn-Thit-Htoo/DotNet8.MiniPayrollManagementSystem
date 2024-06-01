@@ -28,7 +28,6 @@ public class PayrollRepository : IPayrollRepository
             // both from date & to date
             #region From Date & To Date
 
-            #endregion
             if (!string.IsNullOrEmpty(fromDate) && !string.IsNullOrEmpty(toDate))
             {
                 var parameters = new
@@ -41,6 +40,7 @@ public class PayrollRepository : IPayrollRepository
                    .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByFromDateToDateWithEmployeeCode", parameters,
                    commandType: CommandType.StoredProcedure);
             }
+            #endregion
 
             // only from date
             if (!string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
