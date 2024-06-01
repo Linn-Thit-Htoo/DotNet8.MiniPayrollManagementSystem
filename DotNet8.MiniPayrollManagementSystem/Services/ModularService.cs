@@ -75,6 +75,9 @@ public static class ModularService
 
     #endregion
 
+    #region Add MediatR Service
+
+    #endregion
     private static IServiceCollection AddMediatRService(this IServiceCollection services)
     {
         services.AddMediatR(cf => cf.RegisterServicesFromAssembly(typeof(Program).Assembly));
