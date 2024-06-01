@@ -59,5 +59,6 @@ public static class ChangeModel
             IsActive = true
         };
     }
+
     #endregion
 }
