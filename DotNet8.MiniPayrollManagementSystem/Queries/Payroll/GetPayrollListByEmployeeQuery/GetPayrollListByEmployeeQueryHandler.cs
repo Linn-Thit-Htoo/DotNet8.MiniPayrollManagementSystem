@@ -4,7 +4,7 @@ using MediatR;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery
 {
-    public class GetPayrollListByEmployeeQueryHandler : IRequestHandler<GetPayrollListByEmployeeQuery, PayrollListResponseModel>
+    public class GetPayrollListByEmployeeQueryHandler : IRequestHandler<GetPayrollListByEmployeeQuery, IEnumerable<PayrollResponseModel>>
     {
         private readonly IPayrollRepository _payrollRepository;
 
@@ -13,9 +13,9 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollList
             _payrollRepository = payrollRepository;
         }
 
-        public async Task<PayrollListResponseModel> Handle(GetPayrollListByEmployeeQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<PayrollResponseModel>> Handle(GetPayrollListByEmployeeQuery request, CancellationToken cancellationToken)
         {
-            return await _payrollRepository.GetPayrollByEmployeeAsync(request.EmployeeCode);
+            return await _payrollRepository.GetPayrollListByEmployeeAsync(request.EmployeeCode);
         }
     }
 }

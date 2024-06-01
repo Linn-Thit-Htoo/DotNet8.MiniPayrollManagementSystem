@@ -4,6 +4,7 @@ using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
 using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
 using DotNet8.MiniPayrollManagementSystem.Api.Services.Employee;
 using DotNet8.MiniPayrollManagementSystem.Api.Validators.Employee;
+using DotNet8.MiniPayrollManagementSystem.Api.Validators.Payroll;
 using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -97,12 +98,14 @@ public static class ModularService
     private static IServiceCollection AddCustomServices(this IServiceCollection services)
     {
         services.AddScoped<GenerateEmployeeCodeService>();
+        services.AddScoped<DapperService>();
         return services;
     }
 
     private static IServiceCollection AddValidatorService(this IServiceCollection services)
     {
         services.AddScoped<EmployeeValidator>();
+        services.AddScoped<PayrollValidator>();
         return services;
     }
 }

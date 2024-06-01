@@ -37,4 +37,19 @@ public static class ChangeModel
             TaxAmount = dataModel.TaxAmount
         };
     }
+
+    public static TblPayroll Change(this PayrollRequestModel requestModel)
+    {
+        return new TblPayroll
+        {
+            PId = Ulid.NewUlid().ToString(),
+            EmployeeName = requestModel.EmployeeName,
+            BonusAmount = requestModel.BonusAmount,
+            DeductionAmount = requestModel.DeductionAmount,
+            GrossPay = requestModel.GrossPay,
+            NetPay = requestModel.NetPay,
+            PayDate = requestModel.PayDate,
+            TaxAmount = requestModel.TaxAmount
+        };
+    }
 }
