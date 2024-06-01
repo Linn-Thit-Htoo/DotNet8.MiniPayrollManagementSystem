@@ -50,6 +50,12 @@ public class BL_Employee
         if (id <= 0)
             throw new Exception("Id cannot be empty.");
 
+        bool isEmailDuplicate = await _appDbContext.TblEmployees
+           .AsNoTracking()
+           .AnyAsync(x => x.Email == requestModel.Email && x.IsActive && x.EmployeeId != id);
+        if (isEmailDuplicate)
+            throw new Exception("Employee with this email already exists.");
+
         return await _dA_Employee.UpdateEmployeeAsync(requestModel, id);
     }
 

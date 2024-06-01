@@ -11,9 +11,9 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Validators.Payroll
             RuleFor(x => x.PayDate).NotEmpty().NotNull().WithMessage("Pay Date cannot be empty.");
             RuleFor(x => x.GrossPay).NotEmpty().NotNull().WithMessage("Gross Pay cannot be empty.");
             RuleFor(x => x.NetPay).NotEmpty().NotNull().WithMessage("Net Pay cannot be empty.");
-            RuleFor(x => x.DeductionAmount).NotEmpty().NotNull().WithMessage("Deduction Amount cannot be empty.");
-            RuleFor(x => x.BonusAmount).NotEmpty().NotNull().WithMessage("Bonus Amount cannot be empty.");
-            RuleFor(x => x.TaxAmount).NotEmpty().NotNull().WithMessage("Tax Amount cannot be empty.");
+            //RuleFor(x => x.DeductionAmount).NotEmpty().NotNull().WithMessage("Deduction Amount cannot be empty.");
+            //RuleFor(x => x.BonusAmount).NotEmpty().NotNull().WithMessage("Bonus Amount cannot be empty.");
+            //RuleFor(x => x.TaxAmount).NotEmpty().NotNull().WithMessage("Tax Amount cannot be empty.");
         }
     }
 }

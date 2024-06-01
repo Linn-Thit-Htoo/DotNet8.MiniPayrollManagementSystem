@@ -17,25 +17,11 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPayrollListByEmployee(string employeeCode)
+        public async Task<IActionResult> GetPayrollListByEmployee(string employeeCode, string? fromDate = "", string? toDate = "")
         {
             try
             {
-                var lst = await _bL_Payroll.GetPayrollByEmployeeAsync(employeeCode);
-                return Content(lst);
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> FilterPayrollByEmployeeByDate(string employeeCode, string fromDate, string toDate)
-        {
-            try
-            {
-                var lst = await _bL_Payroll.FilterPayrollListByEmployeeAsync(employeeCode, fromDate, toDate);
+                var lst = await _bL_Payroll.GetPayrollByEmployeeAsync(employeeCode, fromDate, toDate);
                 return Content(lst);
             }
             catch (Exception ex)

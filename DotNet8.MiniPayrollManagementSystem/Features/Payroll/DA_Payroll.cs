@@ -1,5 +1,4 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.CreatePayroll;
-using DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.FilterPayrollListByEmployeeQuery;
 using DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
 using MediatR;
@@ -15,11 +14,16 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
             _mediator = mediator;
         }
 
-        public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(string employeeCode)
+        public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(string employeeCode, string? fromDate = "", string? toDate = "")
         {
             try
             {
-                var query = new GetPayrollListByEmployeeQuery() { EmployeeCode = employeeCode };
+                var query = new GetPayrollListByEmployeeQuery()
+                {
+                    EmployeeCode = employeeCode,
+                    FromDate = fromDate,
+                    ToDate = toDate
+                };
                 return await _mediator.Send(query);
             }
             catch (Exception ex)
@@ -39,17 +43,6 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
             {
                 throw new Exception(ex.Message);
             }
-        }
-        public async Task<IEnumerable<PayrollResponseModel>> FilterPayrollListByEmployeeAsync(string employeeCode, string fromDate, string toDate)
-        {
-            var query = new FilterPayrollListByEmployeeQuery()
-            {
-                EmployeeCode = employeeCode,
-                FromDate = fromDate,
-                ToDate = toDate
-            };
-
-            return await _mediator.Send(query);
         }
     }
 }

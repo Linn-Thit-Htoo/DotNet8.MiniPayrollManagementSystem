@@ -15,9 +15,9 @@ public partial class TblPayroll
 
     public decimal NetPay { get; set; }
 
-    public decimal DeductionAmount { get; set; }
+    public decimal? DeductionAmount { get; set; }
 
-    public decimal BonusAmount { get; set; }
+    public decimal? BonusAmount { get; set; }
 
-    public decimal TaxAmount { get; set; }
+    public decimal? TaxAmount { get; set; }
 }

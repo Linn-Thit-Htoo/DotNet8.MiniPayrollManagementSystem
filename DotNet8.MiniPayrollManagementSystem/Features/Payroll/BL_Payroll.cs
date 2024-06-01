@@ -1,6 +1,7 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Validators.Payroll;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.Text;
 
@@ -17,17 +18,17 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
             this._payrollValidator = payrollValidator;
         }
 
-        public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(string employeeCode)
+        public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(string employeeCode, string? fromDate = "", string? toDate = "")
         {
             if (string.IsNullOrEmpty(employeeCode))
                 throw new Exception("Employee Code cannot be empty.");
 
-            return await _dA_Payroll.GetPayrollByEmployeeAsync(employeeCode);
+            return await _dA_Payroll.GetPayrollByEmployeeAsync(employeeCode, fromDate, toDate);
         }
 
         public async Task<int> CreatePayrollAsync(PayrollRequestModel requestModel)
         {
-            ValidationResult validationResult = await _payrollValidator.ValidateAsync(requestModel);\
+            ValidationResult validationResult = await _payrollValidator.ValidateAsync(requestModel);
             StringBuilder errors = new();
 
             if (!validationResult.IsValid)
@@ -37,16 +38,6 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
             }
 
             return await _dA_Payroll.CreatePayrollAsync(requestModel);
-        }
-        public async Task<IEnumerable<PayrollResponseModel>> FilterPayrollListByEmployeeAsync(string employeeCode, string fromDate, string toDate)
-        {
-            if (string.IsNullOrEmpty(employeeCode))
-                throw new Exception("Employee Code cannot be empty.");
-
-            if (string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
-                throw new Exception("Invalid Date.");
-
-            return await _dA_Payroll.FilterPayrollListByEmployeeAsync(employeeCode, fromDate, toDate);
         }
     }
 }

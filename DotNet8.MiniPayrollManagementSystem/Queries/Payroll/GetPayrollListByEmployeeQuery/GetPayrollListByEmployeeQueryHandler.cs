@@ -15,7 +15,7 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollList
 
         public async Task<IEnumerable<PayrollResponseModel>> Handle(GetPayrollListByEmployeeQuery request, CancellationToken cancellationToken)
         {
-            return await _payrollRepository.GetPayrollListByEmployeeAsync(request.EmployeeCode);
+            return await _payrollRepository.GetPayrollListByEmployeeAsync(request.EmployeeCode, request.FromDate, request.ToDate);
         }
     }
 }
