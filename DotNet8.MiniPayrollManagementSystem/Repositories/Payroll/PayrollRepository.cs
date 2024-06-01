@@ -83,6 +83,7 @@ public class PayrollRepository : IPayrollRepository
                     , new { EmployeeCode = employeeCode },
                     commandType: CommandType.StoredProcedure);
             }
+
             #endregion
 
             return lst!;
