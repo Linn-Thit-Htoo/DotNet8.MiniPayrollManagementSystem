@@ -6,6 +6,9 @@ namespace DotNet8.MiniPayrollManagementSystem.Models;
 
 public static class ChangeModel
 {
+    #region Employee
+
+    #endregion
     public static EmployeeModel Change(this TblEmployee dataModel)
     {
         return new EmployeeModel
