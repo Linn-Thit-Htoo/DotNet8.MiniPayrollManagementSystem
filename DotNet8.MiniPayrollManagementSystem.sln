@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8.MiniPayrollManageme
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8.MiniPayrollManagementSystem.DbService", "DotNet8.MiniPayrollManagementSystem.DbService\DotNet8.MiniPayrollManagementSystem.DbService.csproj", "{70BF0586-7C27-4031-889C-FC70CEEA9EC1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{5A22CF43-4F86-4E0C-8CF4-0454BEC3D8B9}"
+	ProjectSection(SolutionItems) = preProject
+		MiniPayrollManagementSystem.sql = MiniPayrollManagementSystem.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
