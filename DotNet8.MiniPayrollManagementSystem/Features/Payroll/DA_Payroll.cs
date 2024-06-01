@@ -5,72 +5,71 @@ using DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEm
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
 using MediatR;
 
-namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
+namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
+
+public class DA_Payroll
 {
-    public class DA_Payroll
+    private readonly IMediator _mediator;
+
+    public DA_Payroll(IMediator mediator)
     {
-        private readonly IMediator _mediator;
+        _mediator = mediator;
+    }
 
-        public DA_Payroll(IMediator mediator)
+    public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(string employeeCode, string? fromDate = "", string? toDate = "")
+    {
+        try
         {
-            _mediator = mediator;
+            var query = new GetPayrollListByEmployeeQuery()
+            {
+                EmployeeCode = employeeCode,
+                FromDate = fromDate,
+                ToDate = toDate
+            };
+            return await _mediator.Send(query);
         }
-
-        public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(string employeeCode, string? fromDate = "", string? toDate = "")
+        catch (Exception ex)
         {
-            try
-            {
-                var query = new GetPayrollListByEmployeeQuery()
-                {
-                    EmployeeCode = employeeCode,
-                    FromDate = fromDate,
-                    ToDate = toDate
-                };
-                return await _mediator.Send(query);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            throw new Exception(ex.Message);
         }
+    }
 
-        public async Task<int> CreatePayrollAsync(PayrollRequestModel requestModel)
+    public async Task<int> CreatePayrollAsync(PayrollRequestModel requestModel)
+    {
+        try
         {
-            try
-            {
-                var command = new CreatePayrollCommand() { PayrollRequestModel = requestModel };
-                return await _mediator.Send(command);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            var command = new CreatePayrollCommand() { PayrollRequestModel = requestModel };
+            return await _mediator.Send(command);
         }
-
-        public async Task<int> UpdatePayrollAsync(PayrollRequestModel requestModel, string pId)
+        catch (Exception ex)
         {
-            try
-            {
-                var command = new UpdatePayrollCommand() { PayrollRequestModel = requestModel, PId = pId };
-                return await _mediator.Send(command);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            throw new Exception(ex.Message);
         }
+    }
 
-        public async Task<int> DeletePayrollAsync(string pId)
+    public async Task<int> UpdatePayrollAsync(PayrollRequestModel requestModel, string pId)
+    {
+        try
         {
-            try
-            {
-                var command = new DeletePayrollCommand() { PId = pId };
-                return await _mediator.Send(command);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            var command = new UpdatePayrollCommand() { PayrollRequestModel = requestModel, PId = pId };
+            return await _mediator.Send(command);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task<int> DeletePayrollAsync(string pId)
+    {
+        try
+        {
+            var command = new DeletePayrollCommand() { PId = pId };
+            return await _mediator.Send(command);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
         }
     }
 }
