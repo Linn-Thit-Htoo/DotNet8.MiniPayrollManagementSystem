@@ -39,7 +39,6 @@ public class DapperService
 
     #region Query First Or Default
 
-    #endregion
     public T QueryFirstOrDefault<T>(string query, object? parameters, CommandType commandType = CommandType.Text)
     {
         using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
@@ -47,6 +46,7 @@ public class DapperService
 
         return item!;
     }
+    #endregion
 
     public async Task<T> QueryFirstOrDefaultAsync<T>(string query, object? parameters, CommandType commandType = CommandType.Text)
     {
