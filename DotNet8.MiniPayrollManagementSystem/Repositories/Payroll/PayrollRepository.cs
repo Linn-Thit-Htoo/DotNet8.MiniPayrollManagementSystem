@@ -76,14 +76,14 @@ public class PayrollRepository : IPayrollRepository
 
             #region Default By Employee Code
 
-            #endregion
             if (string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
             {
                 lst = await _dapperService
                     .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByEmployeeCode"
-                    , new { EmployeeCode = employeeCode},
+                    , new { EmployeeCode = employeeCode },
                     commandType: CommandType.StoredProcedure);
             }
+            #endregion
 
             return lst!;
         }
