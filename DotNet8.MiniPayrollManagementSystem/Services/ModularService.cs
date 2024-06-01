@@ -18,7 +18,7 @@ public static class ModularService
         return services;
     }
 
-    #region MyRegion
+    #region Add Business Logic Services
 
     #endregion
     private static IServiceCollection AddBusinessLogicServices(this IServiceCollection services)
