@@ -78,5 +78,6 @@ public class DapperService
         using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
         return await db.ExecuteAsync(query, parameters, commandType: commandType);
     }
+
     #endregion
 }
