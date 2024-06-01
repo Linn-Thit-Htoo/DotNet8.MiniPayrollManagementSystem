@@ -22,6 +22,7 @@ public class DapperService
 
         return lst;
     }
+
     #endregion
 
     public async Task<IEnumerable<T>> QueryAsync<T>(string query, object? parameters, CommandType commandType = CommandType.Text)
