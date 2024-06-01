@@ -16,6 +16,7 @@ public partial class AppDbContext : DbContext
     }
 
     public virtual DbSet<TblEmployee> TblEmployees { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TblEmployee>(entity =>

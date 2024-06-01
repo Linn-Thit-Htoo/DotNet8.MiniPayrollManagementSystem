@@ -15,7 +15,7 @@ public partial class TblEmployee
 
     public string PhonNumber { get; set; } = null!;
 
-    public byte[] HireDate { get; set; } = null!;
+    public string HireDate { get; set; } = null!;
 
     public string Position { get; set; } = null!;
 
