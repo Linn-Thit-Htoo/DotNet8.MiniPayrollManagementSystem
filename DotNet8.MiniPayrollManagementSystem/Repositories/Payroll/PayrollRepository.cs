@@ -77,7 +77,6 @@ public class PayrollRepository : IPayrollRepository
             #region Default By Employee Code
 
             #endregion
-            // both null
             if (string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
             {
                 lst = await _dapperService
