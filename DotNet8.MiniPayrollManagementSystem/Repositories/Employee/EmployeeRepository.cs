@@ -84,4 +84,53 @@ public class EmployeeRepository : IEmployeeRepository
             throw new Exception(ex.Message);
         }
     }
+
+    public async Task<int> UpdateEmployeeAsync(EmployeeRequestModel requestModel, long id)
+    {
+        try
+        {
+            var item = await _appDbContext.TblEmployees
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.EmployeeId == id && x.IsActive)
+                ?? throw new Exception("No data found.");
+
+            if (!string.IsNullOrEmpty(requestModel.EmployeeName))
+            {
+                item.EmployeeName = requestModel.EmployeeName;
+            }
+
+            if (!string.IsNullOrEmpty(requestModel.Email))
+            {
+                item.Email = requestModel.Email;
+            }
+
+            if (!string.IsNullOrEmpty(requestModel.PhoneNumber))
+            {
+                item.PhoneNumber = requestModel.PhoneNumber;
+            }
+
+            if (!string.IsNullOrEmpty(requestModel.HireDate))
+            {
+                item.HireDate = requestModel.HireDate;
+            }
+
+            if (!string.IsNullOrEmpty(requestModel.Position))
+            {
+                item.Position = requestModel.Position;
+            }
+
+            if (requestModel.Salary != default && requestModel.Salary != 0)
+            {
+                item.Salary = requestModel.Salary;
+            }
+
+            _appDbContext.Entry(item).State = EntityState.Modified;
+
+            return await _appDbContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 }

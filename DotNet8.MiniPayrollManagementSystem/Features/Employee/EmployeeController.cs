@@ -42,6 +42,20 @@ public class EmployeeController : BaseController
         }
     }
 
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> UpdateEmployee([FromBody] EmployeeRequestModel requestModel, long id)
+    {
+        try
+        {
+            int result = await _bL_Employee.UpdateEmployeeAsync(requestModel, id);
+            return result > 0 ? Accepted("Employee Updated.") : BadRequest("Updating Fail.");
+        }
+        catch (Exception ex)
+        {
+            return InternalServerError(ex);
+        }
+    }
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteEmployee(long id)
     {

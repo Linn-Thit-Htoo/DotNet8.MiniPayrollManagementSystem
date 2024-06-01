@@ -7,4 +7,5 @@ public interface IEmployeeRepository
     Task<EmployeeListResponseModel> GetEmployeeListAsync();
     Task<int> CreateEmployeeAsync(EmployeeRequestModel requestModel);
     Task<int> DeleteEmployeeAsync(long id);
+    Task<int> UpdateEmployeeAsync(EmployeeRequestModel requestModel, long id);
 }

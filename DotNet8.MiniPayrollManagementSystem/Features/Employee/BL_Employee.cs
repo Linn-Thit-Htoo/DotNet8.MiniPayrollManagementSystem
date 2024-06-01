@@ -45,6 +45,14 @@ public class BL_Employee
         return await _dA_Employee.CreateEmployeeAsync(requestModel);
     }
 
+    public async Task<int> UpdateEmployeeAsync(EmployeeRequestModel requestModel, long id)
+    {
+        if (id <= 0)
+            throw new Exception("Id cannot be empty.");
+
+        return await _dA_Employee.UpdateEmployeeAsync(requestModel, id);
+    }
+
     public async Task<int> DeleteEmployeeAsync(long id)
     {
         if (id <= 0)

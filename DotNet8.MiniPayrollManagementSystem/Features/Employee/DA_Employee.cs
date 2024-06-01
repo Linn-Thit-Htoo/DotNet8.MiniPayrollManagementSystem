@@ -1,5 +1,6 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
 using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.DeleteEmployee;
+using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.UpdateEmployee;
 using DotNet8.MiniPayrollManagementSystem.Api.Queries.Employee.GetEmployeeListQuery;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
 using MediatR;
@@ -47,6 +48,19 @@ public class DA_Employee
         try
         {
             var command = new DeleteEmployeeCommand() { EmployeeId = id };
+            return await _mediator.Send(command);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task<int> UpdateEmployeeAsync(EmployeeRequestModel requestModel, long id)
+    {
+        try
+        {
+            var command = new UpdateEmployeeCommand() { EmployeeId = id, EmployeeRequestModel = requestModel };
             return await _mediator.Send(command);
         }
         catch (Exception ex)
