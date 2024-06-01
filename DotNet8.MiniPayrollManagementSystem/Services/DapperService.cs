@@ -63,12 +63,12 @@ public class DapperService
 
     #region Execute
 
-    #endregion
     public int Execute(string query, object? parameters, CommandType commandType = CommandType.Text)
     {
         using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
         return db.Execute(query, parameters, commandType: commandType);
     }
+    #endregion
 
     public async Task<int> ExecuteAsync(string query, object? parameters, CommandType commandType = CommandType.Text)
     {
