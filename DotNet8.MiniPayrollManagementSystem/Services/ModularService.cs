@@ -49,6 +49,7 @@ public static class ModularService
 
         return services;
     }
+
     #endregion
 
     private static IServiceCollection AddRepositoryServices(this IServiceCollection services)
