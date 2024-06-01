@@ -55,13 +55,6 @@ public class PayrollRepository : IPayrollRepository
             // only to date
             if (!string.IsNullOrEmpty(toDate) && string.IsNullOrEmpty(fromDate))
             {
-                //                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive
-                //DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
-                //FROM Tbl_Payroll
-                //INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
-                //WHERE PayDate <= @ToDate AND Tbl_Payroll.IsActive = @IsActive
-                //ORDER BY PId DESC
-                //";
                 var parameters = new
                 {
                     EmployeeCode = employeeCode,
