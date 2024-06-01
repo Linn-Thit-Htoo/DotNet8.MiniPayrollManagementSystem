@@ -141,7 +141,6 @@ public class PayrollRepository : IPayrollRepository
 
             #region Patch Method Validation
 
-            #endregion
             if (!string.IsNullOrEmpty(requestModel.PayDate))
             {
                 item.PayDate = requestModel.PayDate;
@@ -171,6 +170,7 @@ public class PayrollRepository : IPayrollRepository
             {
                 item.TaxAmount = requestModel.TaxAmount;
             }
+            #endregion
 
             _appDbContext.Entry(item).State = EntityState.Modified;
 
