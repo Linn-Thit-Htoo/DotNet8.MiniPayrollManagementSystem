@@ -18,6 +18,9 @@ public static class ModularService
         return services;
     }
 
+    #region MyRegion
+
+    #endregion
     private static IServiceCollection AddBusinessLogicServices(this IServiceCollection services)
     {
         services.AddScoped<BL_Employee>();
