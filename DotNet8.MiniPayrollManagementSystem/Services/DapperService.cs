@@ -13,6 +13,9 @@ public class DapperService
         _configuration = configuration;
     }
 
+    #region Query
+
+    #endregion
     public List<T> Query<T>(string query, object? parameters, CommandType commandType = CommandType.Text)
     {
         using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
