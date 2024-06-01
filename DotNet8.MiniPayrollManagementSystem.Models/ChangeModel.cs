@@ -8,7 +8,6 @@ public static class ChangeModel
 {
     #region Employee
 
-    #endregion
     public static EmployeeModel Change(this TblEmployee dataModel)
     {
         return new EmployeeModel
@@ -24,6 +23,7 @@ public static class ChangeModel
             Salary = dataModel.Salary
         };
     }
+    #endregion
 
     public static PayrollModel Change(this TblPayroll dataModel)
     {
