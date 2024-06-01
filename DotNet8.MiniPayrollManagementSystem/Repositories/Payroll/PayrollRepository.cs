@@ -43,55 +43,57 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll
                 // only from date
                 if (!string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
                 {
-                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive
-DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
-FROM Tbl_Payroll
-INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
-WHERE PayDate >= @FromDate AND Tbl_Payroll.IsActive = @IsActive
-ORDER BY PId DESC
-";
+                    //                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive
+                    //DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
+                    //FROM Tbl_Payroll
+                    //INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
+                    //WHERE PayDate >= @FromDate AND Tbl_Payroll.IsActive = @IsActive
+                    //ORDER BY PId DESC
+                    //";
                     var parameters = new
                     {
                         EmployeeCode = employeeCode,
-                        FromDate = fromDate,
-                        IsActive = true
+                        FromDate = fromDate
                     };
                     lst = await _dapperService
-                       .QueryAsync<PayrollResponseModel>(query, parameters);
+                       .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByFromDateWithEmployeeCode", parameters,
+                       commandType: CommandType.StoredProcedure);
                 }
 
                 // only to date
                 if (!string.IsNullOrEmpty(toDate) && string.IsNullOrEmpty(fromDate))
                 {
-                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive
-DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
-FROM Tbl_Payroll
-INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
-WHERE PayDate <= @ToDate AND Tbl_Payroll.IsActive = @IsActive
-ORDER BY PId DESC
-";
+                    //                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive
+                    //DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
+                    //FROM Tbl_Payroll
+                    //INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
+                    //WHERE PayDate <= @ToDate AND Tbl_Payroll.IsActive = @IsActive
+                    //ORDER BY PId DESC
+                    //";
                     var parameters = new
                     {
                         EmployeeCode = employeeCode,
                         ToDate = toDate,
-                        IsActive = true
                     };
                     lst = await _dapperService
-                       .QueryAsync<PayrollResponseModel>(query, parameters);
+                       .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByToDateWithEmployeeCode", parameters,
+                       commandType: CommandType.StoredProcedure);
                 }
 
                 // both null
                 if (string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
                 {
-                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive
-DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
-FROM Tbl_Payroll
-INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
-WHERE Tbl_Payroll.IsActive = @IsActive
-ORDER BY PId DESC
-";
+                    //                    query = @"SELECT PId, Tbl_Payroll.EmployeeName, PayDate, GrossPay, NetPay, Tbl_Payroll.IsActive
+                    //DeductionAmount, BonusAmount, TaxAmount, EmployeeCode
+                    //FROM Tbl_Payroll
+                    //INNER JOIN Tbl_Employee ON Tbl_Employee.EmployeeCode = @EmployeeCode
+                    //WHERE Tbl_Payroll.IsActive = @IsActive
+                    //ORDER BY PId DESC
+                    //";
                     lst = await _dapperService
-                        .QueryAsync<PayrollResponseModel>(query, new { EmployeeCode = employeeCode, IsActive = true });
+                        .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByEmployeeCode"
+                        , new { EmployeeCode = employeeCode},
+                        commandType: CommandType.StoredProcedure);
                 }
 
                 return lst!;
