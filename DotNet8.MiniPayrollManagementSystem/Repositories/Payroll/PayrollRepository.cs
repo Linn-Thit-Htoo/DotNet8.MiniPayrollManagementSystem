@@ -170,6 +170,7 @@ public class PayrollRepository : IPayrollRepository
             {
                 item.TaxAmount = requestModel.TaxAmount;
             }
+
             #endregion
 
             _appDbContext.Entry(item).State = EntityState.Modified;
