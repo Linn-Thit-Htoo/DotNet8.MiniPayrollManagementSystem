@@ -3,56 +3,55 @@ using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
 using FluentValidation.Results;
 using System.Text;
 
-namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
+namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
+
+public class BL_Payroll
 {
-    public class BL_Payroll
+    private readonly DA_Payroll _dA_Payroll;
+    private readonly PayrollValidator _payrollValidator;
+
+    public BL_Payroll(DA_Payroll dA_Payroll, PayrollValidator payrollValidator)
     {
-        private readonly DA_Payroll _dA_Payroll;
-        private readonly PayrollValidator _payrollValidator;
+        _dA_Payroll = dA_Payroll;
+        this._payrollValidator = payrollValidator;
+    }
 
-        public BL_Payroll(DA_Payroll dA_Payroll, PayrollValidator payrollValidator)
+    public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(string employeeCode, string? fromDate = "", string? toDate = "")
+    {
+        if (string.IsNullOrEmpty(employeeCode))
+            throw new Exception("Employee Code cannot be empty.");
+
+        return await _dA_Payroll.GetPayrollByEmployeeAsync(employeeCode, fromDate, toDate);
+    }
+
+    public async Task<int> CreatePayrollAsync(PayrollRequestModel requestModel)
+    {
+        ValidationResult validationResult = await _payrollValidator.ValidateAsync(requestModel);
+        StringBuilder errors = new();
+
+        if (!validationResult.IsValid)
         {
-            _dA_Payroll = dA_Payroll;
-            this._payrollValidator = payrollValidator;
+            validationResult.Errors.ForEach(err => errors.AppendLine(err.ErrorMessage));
+            throw new Exception(errors.ToString());
         }
 
-        public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(string employeeCode, string? fromDate = "", string? toDate = "")
-        {
-            if (string.IsNullOrEmpty(employeeCode))
-                throw new Exception("Employee Code cannot be empty.");
+        return await _dA_Payroll.CreatePayrollAsync(requestModel);
+    }
 
-            return await _dA_Payroll.GetPayrollByEmployeeAsync(employeeCode, fromDate, toDate);
-        }
+    public async Task<int> UpdatePayrollAsync(PayrollRequestModel requestModel, string pId)
+    {
+        if (string.IsNullOrEmpty(pId))
+            throw new Exception("Id is invalid.");
 
-        public async Task<int> CreatePayrollAsync(PayrollRequestModel requestModel)
-        {
-            ValidationResult validationResult = await _payrollValidator.ValidateAsync(requestModel);
-            StringBuilder errors = new();
-
-            if (!validationResult.IsValid)
-            {
-                validationResult.Errors.ForEach(err => errors.AppendLine(err.ErrorMessage));
-                throw new Exception(errors.ToString());
-            }
-
-            return await _dA_Payroll.CreatePayrollAsync(requestModel);
-        }
-
-        public async Task<int> UpdatePayrollAsync(PayrollRequestModel requestModel, string pId)
-        {
-            if (string.IsNullOrEmpty(pId))
-                throw new Exception("Id is invalid.");
-
-            return await _dA_Payroll.UpdatePayrollAsync(requestModel, pId);
-        }
+        return await _dA_Payroll.UpdatePayrollAsync(requestModel, pId);
+    }
 
 
-        public async Task<int> DeletePayrollAsync(string pId)
-        {
-            if (string.IsNullOrEmpty(pId))
-                throw new Exception("Id cannot be empty.");
+    public async Task<int> DeletePayrollAsync(string pId)
+    {
+        if (string.IsNullOrEmpty(pId))
+            throw new Exception("Id cannot be empty.");
 
-            return await _dA_Payroll.DeletePayrollAsync(pId);
-        }
+        return await _dA_Payroll.DeletePayrollAsync(pId);
     }
 }
