@@ -10,7 +10,7 @@ public partial class TblEmployee
 
     public string Email { get; set; } = null!;
 
-    public string PhonNumber { get; set; } = null!;
+    public string PhoneNumber { get; set; } = null!;
 
     public string HireDate { get; set; } = null!;
 
