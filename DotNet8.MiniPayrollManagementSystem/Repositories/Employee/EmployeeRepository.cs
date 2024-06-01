@@ -1,9 +1,10 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
 using DotNet8.MiniPayrollManagementSystem.Models;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
+using DotNet8.MiniPayrollManagementSystem.Repositories.Employee;
 using Microsoft.EntityFrameworkCore;
 
-namespace DotNet8.MiniPayrollManagementSystem.Repositories.Employee
+namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee
 {
     public class EmployeeRepository : IEmployeeRepository
     {
