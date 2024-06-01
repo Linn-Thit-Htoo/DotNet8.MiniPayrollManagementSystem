@@ -57,6 +57,7 @@ public class PayrollRepository : IPayrollRepository
                    .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByFromDateWithEmployeeCode", parameters,
                    commandType: CommandType.StoredProcedure);
             }
+
             #endregion
 
             // only to date
