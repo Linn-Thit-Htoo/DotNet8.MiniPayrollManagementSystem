@@ -44,6 +44,20 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
             }
         }
 
+        [HttpPatch("{pId}")]
+        public async Task<IActionResult> UpdatePayroll([FromBody] PayrollRequestModel requestModel, string pId)
+        {
+            try
+            {
+                int result = await _bL_Payroll.UpdatePayrollAsync(requestModel, pId);
+                return result > 0 ? Accepted("Payroll Updated.") : BadRequest("Updating Fail.");
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePayroll(string id)
         {

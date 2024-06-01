@@ -146,5 +146,63 @@ ORDER BY PId DESC
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<int> UpdatePayrollAsync(PayrollRequestModel requestModel, string pId)
+        {
+            try
+            {
+                var item = await _appDbContext.TblPayrolls
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.PId == pId && x.IsActive)
+                    ?? throw new Exception("No data found.");
+
+                if (!string.IsNullOrEmpty(requestModel.EmployeeName))
+                {
+                    item.EmployeeName = requestModel.EmployeeName;
+                    var employee = await _appDbContext.TblEmployees
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(x => x.EmployeeName == requestModel.EmployeeName && x.IsActive)
+                        ?? throw new Exception("Employee does not exist.");
+                }
+
+                if (!string.IsNullOrEmpty(requestModel.PayDate))
+                {
+                    item.PayDate = requestModel.PayDate;
+                }
+
+                if (requestModel.GrossPay != 0)
+                {
+                    item.GrossPay = requestModel.GrossPay;
+                }
+
+                if (requestModel.NetPay != 0)
+                {
+                    item.NetPay = requestModel.NetPay;
+                }
+
+                if (requestModel.DeductionAmount != 0)
+                {
+                    item.DeductionAmount = requestModel.DeductionAmount;
+                }
+
+                if (requestModel.BonusAmount != 0)
+                {
+                    item.BonusAmount = requestModel.BonusAmount;
+                }
+
+                if (requestModel.TaxAmount != 0)
+                {
+                    item.TaxAmount = requestModel.TaxAmount;
+                }
+
+                _appDbContext.Entry(item).State = EntityState.Modified;
+
+                return await _appDbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

@@ -40,6 +40,15 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll
             return await _dA_Payroll.CreatePayrollAsync(requestModel);
         }
 
+        public async Task<int> UpdatePayrollAsync(PayrollRequestModel requestModel, string pId)
+        {
+            if (string.IsNullOrEmpty(pId))
+                throw new Exception("Id is invalid.");
+
+            return await _dA_Payroll.UpdatePayrollAsync(requestModel, pId);
+        }
+
+
         public async Task<int> DeletePayrollAsync(string pId)
         {
             if (string.IsNullOrEmpty(pId))
