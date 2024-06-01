@@ -1,6 +1,5 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
 using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
-using DotNet8.MiniPayrollManagementSystem.Features.Employee;
 using DotNet8.MiniPayrollManagementSystem.Repositories.Employee;
 using Microsoft.EntityFrameworkCore;
 

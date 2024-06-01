@@ -2,7 +2,7 @@
 using DotNet8.MiniPayrollManagementSystem.Queries.Employee.GetEmployeeListQuery;
 using MediatR;
 
-namespace DotNet8.MiniPayrollManagementSystem.Features.Employee
+namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Employee
 {
     public class DA_Employee
     {
