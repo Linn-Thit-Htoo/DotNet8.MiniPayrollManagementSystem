@@ -1,20 +1,19 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
 using MediatR;
 
-namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.CreatePayroll
+namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.CreatePayroll;
+
+public class CreatePayrollCommandHandler : IRequestHandler<CreatePayrollCommand, int>
 {
-    public class CreatePayrollCommandHandler : IRequestHandler<CreatePayrollCommand, int>
+    private readonly IPayrollRepository _payrollRepository;
+
+    public CreatePayrollCommandHandler(IPayrollRepository payrollRepository)
     {
-        private readonly IPayrollRepository _payrollRepository;
+        _payrollRepository = payrollRepository;
+    }
 
-        public CreatePayrollCommandHandler(IPayrollRepository payrollRepository)
-        {
-            _payrollRepository = payrollRepository;
-        }
-
-        public async Task<int> Handle(CreatePayrollCommand request, CancellationToken cancellationToken)
-        {
-            return await _payrollRepository.CreatePayrollAsync(request.PayrollRequestModel);
-        }
+    public async Task<int> Handle(CreatePayrollCommand request, CancellationToken cancellationToken)
+    {
+        return await _payrollRepository.CreatePayrollAsync(request.PayrollRequestModel);
     }
 }
