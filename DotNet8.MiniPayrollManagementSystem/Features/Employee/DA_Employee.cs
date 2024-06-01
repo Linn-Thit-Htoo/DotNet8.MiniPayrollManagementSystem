@@ -2,29 +2,28 @@
 using DotNet8.MiniPayrollManagementSystem.Queries.Employee.GetEmployeeListQuery;
 using MediatR;
 
-namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Employee
+namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
+
+public class DA_Employee
 {
-    public class DA_Employee
+    private readonly IMediator _mediator;
+
+    public DA_Employee(IMediator mediator)
     {
-        private readonly IMediator _mediator;
+        _mediator = mediator;
+    }
 
-        public DA_Employee(IMediator mediator)
+    public async Task<EmployeeListResponseModel> GetEmployeeListAsync()
+    {
+        try
         {
-            _mediator = mediator;
+            var query = new GetEmployeeListQuery();
+            var lst = await _mediator.Send(query);
+            return lst;
         }
-
-        public async Task<EmployeeListResponseModel> GetEmployeeListAsync()
+        catch (Exception ex)
         {
-            try
-            {
-                var query = new GetEmployeeListQuery();
-                var lst = await _mediator.Send(query);
-                return lst;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            throw new Exception(ex.Message);
         }
     }
 }
