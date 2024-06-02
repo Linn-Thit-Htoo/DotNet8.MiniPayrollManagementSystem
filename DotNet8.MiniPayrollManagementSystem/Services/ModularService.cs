@@ -14,14 +14,15 @@ public static class ModularService
 {
     public static IServiceCollection AddServices(this IServiceCollection services, WebApplicationBuilder builder)
     {
-        services.AddDbContextServices(builder);
-        services.AddMediatRService();
-        services.AddDataAccessServices();
-        services.AddBusinessLogicServices();
-        services.AddRepositoryServices();
-        services.AddJsonServices();
-        services.AddCustomServices();
-        services.AddValidatorService();
+        services.AddDbContextServices(builder)
+            .AddMediatRService()
+            .AddDataAccessServices()
+            .AddBusinessLogicServices()
+            .AddRepositoryServices()
+            .AddJsonServices()
+            .AddCustomServices()
+            .AddValidatorService();
+
         return services;
     }
 
@@ -29,8 +30,9 @@ public static class ModularService
 
     private static IServiceCollection AddBusinessLogicServices(this IServiceCollection services)
     {
-        services.AddScoped<BL_Employee>();
-        services.AddScoped<BL_Payroll>();
+        services.AddScoped<BL_Employee>()
+            .AddScoped<BL_Payroll>();
+
         return services;
     }
 
@@ -40,8 +42,9 @@ public static class ModularService
 
     private static IServiceCollection AddDataAccessServices(this IServiceCollection services)
     {
-        services.AddScoped<DA_Employee>();
-        services.AddScoped<DA_Payroll>();
+        services.AddScoped<DA_Employee>()
+            .AddScoped<DA_Payroll>();
+
         return services;
     }
 
@@ -65,8 +68,9 @@ public static class ModularService
 
     private static IServiceCollection AddRepositoryServices(this IServiceCollection services)
     {
-        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-        services.AddScoped<IPayrollRepository, PayrollRepository>();
+        services.AddScoped<IEmployeeRepository, EmployeeRepository>()
+            .AddScoped<IPayrollRepository, PayrollRepository>();
+
         return services;
     }
 
@@ -97,15 +101,17 @@ public static class ModularService
 
     private static IServiceCollection AddCustomServices(this IServiceCollection services)
     {
-        services.AddScoped<GenerateEmployeeCodeService>();
-        services.AddScoped<DapperService>();
+        services.AddScoped<GenerateEmployeeCodeService>()
+            .AddScoped<DapperService>();
+
         return services;
     }
 
     private static IServiceCollection AddValidatorService(this IServiceCollection services)
     {
-        services.AddScoped<EmployeeValidator>();
-        services.AddScoped<PayrollValidator>();
+        services.AddScoped<EmployeeValidator>()
+            .AddScoped<PayrollValidator>();
+
         return services;
     }
 }
