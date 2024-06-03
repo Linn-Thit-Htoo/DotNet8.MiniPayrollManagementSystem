@@ -11,4 +11,5 @@ public class GetPayrollListByEmployeeQuery : IRequest<IEnumerable<PayrollRespons
     public string? FromDate { get; set; }
     public string? ToDate { get; set; }
 }
+
 #endregion
