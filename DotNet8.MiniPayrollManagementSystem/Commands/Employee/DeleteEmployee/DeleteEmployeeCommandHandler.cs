@@ -3,7 +3,7 @@ using MediatR;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.DeleteEmployee;
 
-#region MyRegion
+#region DeleteEmployeeCommandHandler
 
 #endregion
 public class DeleteEmployeeCommandHandler : IRequestHandler<DeleteEmployeeCommand, int>
