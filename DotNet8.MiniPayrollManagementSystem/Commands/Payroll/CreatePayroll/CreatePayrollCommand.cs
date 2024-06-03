@@ -5,8 +5,8 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.CreatePayroll
 
 #region Create Payroll Command
 
-#endregion
 public class CreatePayrollCommand : IRequest<int>
 {
     public PayrollRequestModel PayrollRequestModel { get; set; }
 }
+#endregion
