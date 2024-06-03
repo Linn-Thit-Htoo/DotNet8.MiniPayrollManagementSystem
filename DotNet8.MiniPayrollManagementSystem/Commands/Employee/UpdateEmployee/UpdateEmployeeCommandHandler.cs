@@ -19,4 +19,5 @@ public class UpdateEmployeeCommandHandler : IRequestHandler<UpdateEmployeeComman
         return await _employeeRepository.UpdateEmployeeAsync(request.EmployeeRequestModel, request.EmployeeId);
     }
 }
+
 #endregion
