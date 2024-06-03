@@ -74,6 +74,9 @@ public class EmployeeRepository : IEmployeeRepository
 
     #endregion
 
+    #region MyRegion
+
+    #endregion
     public async Task<int> DeleteEmployeeAsync(long id)
     {
         try
