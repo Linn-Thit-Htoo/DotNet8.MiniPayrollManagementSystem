@@ -4,7 +4,7 @@ using MediatR;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Queries.Employee.GetEmployeeListQuery;
 
-#region MyRegion
+#region Get Employee List Query Handler
 
 #endregion
 public class GetEmployeeListQueryHandler : IRequestHandler<GetEmployeeListQuery, EmployeeListResponseModel>
