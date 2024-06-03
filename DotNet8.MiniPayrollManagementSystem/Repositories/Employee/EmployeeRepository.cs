@@ -94,6 +94,7 @@ public class EmployeeRepository : IEmployeeRepository
             throw new Exception(ex.Message);
         }
     }
+
     #endregion
 
     public async Task<int> UpdateEmployeeAsync(EmployeeRequestModel requestModel, long id)
