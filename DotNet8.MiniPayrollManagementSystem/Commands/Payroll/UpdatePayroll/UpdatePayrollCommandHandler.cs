@@ -5,7 +5,6 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.UpdatePayroll
 
 #region Update Payroll Command Handler
 
-#endregion
 public class UpdatePayrollCommandHandler : IRequestHandler<UpdatePayrollCommand, int>
 {
     private readonly IPayrollRepository _payrollRepository;
@@ -20,3 +19,4 @@ public class UpdatePayrollCommandHandler : IRequestHandler<UpdatePayrollCommand,
         return await _payrollRepository.UpdatePayrollAsync(request.PayrollRequestModel, request.PId);
     }
 }
+#endregion
