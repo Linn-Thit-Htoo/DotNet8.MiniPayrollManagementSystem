@@ -8,4 +8,5 @@ public class DeleteEmployeeCommand : IRequest<int>
 {
     public long EmployeeId { get; set; }
 }
+
 #endregion
