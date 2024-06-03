@@ -99,7 +99,6 @@ public class EmployeeRepository : IEmployeeRepository
 
     #region Update Employee Async
 
-    #endregion
     public async Task<int> UpdateEmployeeAsync(EmployeeRequestModel requestModel, long id)
     {
         try
@@ -148,4 +147,5 @@ public class EmployeeRepository : IEmployeeRepository
             throw new Exception(ex.Message);
         }
     }
+    #endregion
 }
