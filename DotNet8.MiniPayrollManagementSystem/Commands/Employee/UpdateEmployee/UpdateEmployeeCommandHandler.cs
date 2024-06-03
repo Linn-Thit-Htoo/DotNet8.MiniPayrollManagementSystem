@@ -5,7 +5,6 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.UpdateEmploy
 
 #region Update Employee Command Handler
 
-#endregion
 public class UpdateEmployeeCommandHandler : IRequestHandler<UpdateEmployeeCommand, int>
 {
     private readonly IEmployeeRepository _employeeRepository;
@@ -20,3 +19,4 @@ public class UpdateEmployeeCommandHandler : IRequestHandler<UpdateEmployeeComman
         return await _employeeRepository.UpdateEmployeeAsync(request.EmployeeRequestModel, request.EmployeeId);
     }
 }
+#endregion
