@@ -5,9 +5,9 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.UpdateEmploy
 
 #region Update Employee Command
 
-#endregion
 public class UpdateEmployeeCommand : IRequest<int>
 {
     public EmployeeRequestModel EmployeeRequestModel { get; set; }
     public long EmployeeId { get; set; }
 }
+#endregion
