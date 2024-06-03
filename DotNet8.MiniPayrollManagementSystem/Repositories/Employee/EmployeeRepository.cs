@@ -42,8 +42,12 @@ public class EmployeeRepository : IEmployeeRepository
             throw new Exception(ex.Message);
         }
     }
+
     #endregion
 
+    #region MyRegion
+
+    #endregion
     public async Task<int> CreateEmployeeAsync(EmployeeRequestModel requestModel)
     {
         try
