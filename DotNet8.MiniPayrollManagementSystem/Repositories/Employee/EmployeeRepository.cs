@@ -19,7 +19,6 @@ public class EmployeeRepository : IEmployeeRepository
 
     #region Get Employee List Async
 
-    #endregion
     public async Task<EmployeeListResponseModel> GetEmployeeListAsync()
     {
         try
@@ -43,6 +42,7 @@ public class EmployeeRepository : IEmployeeRepository
             throw new Exception(ex.Message);
         }
     }
+    #endregion
 
     public async Task<int> CreateEmployeeAsync(EmployeeRequestModel requestModel)
     {
