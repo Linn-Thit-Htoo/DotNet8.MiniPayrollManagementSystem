@@ -19,4 +19,5 @@ public class UpdatePayrollCommandHandler : IRequestHandler<UpdatePayrollCommand,
         return await _payrollRepository.UpdatePayrollAsync(request.PayrollRequestModel, request.PId);
     }
 }
+
 #endregion
