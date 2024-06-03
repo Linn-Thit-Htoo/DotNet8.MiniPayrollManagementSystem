@@ -147,5 +147,6 @@ public class EmployeeRepository : IEmployeeRepository
             throw new Exception(ex.Message);
         }
     }
+
     #endregion
 }
