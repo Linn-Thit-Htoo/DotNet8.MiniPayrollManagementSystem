@@ -20,4 +20,5 @@ public class GetEmployeeListQueryHandler : IRequestHandler<GetEmployeeListQuery,
         return await _employeeRepository.GetEmployeeListAsync();
     }
 }
+
 #endregion
