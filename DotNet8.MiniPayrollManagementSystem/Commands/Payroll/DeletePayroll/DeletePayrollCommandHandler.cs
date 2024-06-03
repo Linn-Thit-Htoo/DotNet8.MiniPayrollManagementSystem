@@ -5,7 +5,6 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.DeletePayroll
 
 #region Delete Payroll Command Handler
 
-#endregion
 public class DeletePayrollCommandHandler : IRequestHandler<DeletePayrollCommand, int>
 {
     private readonly IPayrollRepository _payrollRepository;
@@ -20,3 +19,4 @@ public class DeletePayrollCommandHandler : IRequestHandler<DeletePayrollCommand,
         return await _payrollRepository.DeletePayrollAsync(request.PId);
     }
 }
+#endregion
