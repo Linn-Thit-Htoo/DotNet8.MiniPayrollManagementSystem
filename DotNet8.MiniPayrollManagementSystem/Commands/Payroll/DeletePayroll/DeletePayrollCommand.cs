@@ -2,7 +2,7 @@
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.DeletePayroll;
 
-#region MyRegion
+#region DeletePayrollCommand
 
 #endregion
 public class DeletePayrollCommand : IRequest<int>
