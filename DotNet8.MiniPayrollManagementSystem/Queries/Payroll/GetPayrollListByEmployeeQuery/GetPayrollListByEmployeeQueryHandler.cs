@@ -6,7 +6,6 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollList
 
 #region Get Payroll List By Employee Query Handler
 
-#endregion
 public class GetPayrollListByEmployeeQueryHandler : IRequestHandler<GetPayrollListByEmployeeQuery, IEnumerable<PayrollResponseModel>>
 {
     private readonly IPayrollRepository _payrollRepository;
@@ -21,3 +20,4 @@ public class GetPayrollListByEmployeeQueryHandler : IRequestHandler<GetPayrollLi
         return await _payrollRepository.GetPayrollListByEmployeeAsync(request.EmployeeCode, request.FromDate, request.ToDate);
     }
 }
+#endregion
