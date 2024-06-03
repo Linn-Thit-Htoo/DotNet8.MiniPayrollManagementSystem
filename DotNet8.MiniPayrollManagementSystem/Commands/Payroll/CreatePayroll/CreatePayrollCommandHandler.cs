@@ -5,7 +5,6 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.CreatePayroll
 
 #region Create Payroll Command Handler
 
-#endregion
 public class CreatePayrollCommandHandler : IRequestHandler<CreatePayrollCommand, int>
 {
     private readonly IPayrollRepository _payrollRepository;
@@ -20,3 +19,4 @@ public class CreatePayrollCommandHandler : IRequestHandler<CreatePayrollCommand,
         return await _payrollRepository.CreatePayrollAsync(request.PayrollRequestModel);
     }
 }
+#endregion
