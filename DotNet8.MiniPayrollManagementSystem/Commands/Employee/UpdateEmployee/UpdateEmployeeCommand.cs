@@ -10,4 +10,5 @@ public class UpdateEmployeeCommand : IRequest<int>
     public EmployeeRequestModel EmployeeRequestModel { get; set; }
     public long EmployeeId { get; set; }
 }
+
 #endregion
