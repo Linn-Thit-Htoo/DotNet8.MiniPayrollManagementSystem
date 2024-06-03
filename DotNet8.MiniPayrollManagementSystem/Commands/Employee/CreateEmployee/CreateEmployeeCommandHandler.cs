@@ -3,6 +3,9 @@ using MediatR;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
 
+#region MyRegion
+
+#endregion
 public class CreateEmployeeCommandHandler : IRequestHandler<CreateEmployeeCommand, int>
 {
     private readonly IEmployeeRepository _employeeRepository;
