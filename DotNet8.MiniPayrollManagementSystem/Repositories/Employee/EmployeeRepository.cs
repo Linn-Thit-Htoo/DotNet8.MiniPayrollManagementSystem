@@ -17,7 +17,7 @@ public class EmployeeRepository : IEmployeeRepository
         _generateEmployeeCodeService = generateEmployeeCodeService;
     }
 
-    #region GetEmployeeListAsync
+    #region Get Employee List Async
 
     #endregion
     public async Task<EmployeeListResponseModel> GetEmployeeListAsync()
