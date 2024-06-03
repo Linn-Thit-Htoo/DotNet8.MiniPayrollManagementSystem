@@ -97,7 +97,7 @@ public class EmployeeRepository : IEmployeeRepository
 
     #endregion
 
-    #region UpdateEmployeeAsync
+    #region Update Employee Async
 
     #endregion
     public async Task<int> UpdateEmployeeAsync(EmployeeRequestModel requestModel, long id)
