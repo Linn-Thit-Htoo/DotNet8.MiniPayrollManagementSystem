@@ -19,4 +19,5 @@ public class DeletePayrollCommandHandler : IRequestHandler<DeletePayrollCommand,
         return await _payrollRepository.DeletePayrollAsync(request.PId);
     }
 }
+
 #endregion
