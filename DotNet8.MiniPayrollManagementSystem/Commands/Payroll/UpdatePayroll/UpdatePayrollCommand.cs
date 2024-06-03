@@ -3,6 +3,9 @@ using MediatR;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.UpdatePayroll;
 
+#region MyRegion
+
+#endregion
 public class UpdatePayrollCommand : IRequest<int>
 {
     public PayrollRequestModel PayrollRequestModel { get; set; }
