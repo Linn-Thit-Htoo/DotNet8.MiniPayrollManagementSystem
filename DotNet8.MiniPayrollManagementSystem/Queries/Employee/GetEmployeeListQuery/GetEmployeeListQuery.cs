@@ -5,7 +5,7 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Queries.Employee.GetEmployeeLi
 
 #region Get Employee List Query
 
-#endregion
 public class GetEmployeeListQuery : IRequest<EmployeeListResponseModel>
 {
 }
+#endregion
