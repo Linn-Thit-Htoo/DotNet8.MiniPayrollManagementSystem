@@ -19,4 +19,5 @@ public class CreatePayrollCommandHandler : IRequestHandler<CreatePayrollCommand,
         return await _payrollRepository.CreatePayrollAsync(request.PayrollRequestModel);
     }
 }
+
 #endregion
