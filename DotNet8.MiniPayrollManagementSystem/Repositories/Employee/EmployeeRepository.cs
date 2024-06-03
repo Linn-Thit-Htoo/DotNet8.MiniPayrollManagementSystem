@@ -74,29 +74,6 @@ public class EmployeeRepository : IEmployeeRepository
 
     #endregion
 
-    #region Delete Employee Async
-
-    public async Task<int> DeleteEmployeeAsync(long id)
-    {
-        try
-        {
-            var item = await _appDbContext.TblEmployees
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.EmployeeId == id)
-                ?? throw new Exception("No data found.");
-
-            item.IsActive = false;
-            _appDbContext.Entry(item).State = EntityState.Modified;
-            return await _appDbContext.SaveChangesAsync();
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
-    }
-
-    #endregion
-
     #region Update Employee Async
 
     public async Task<int> UpdateEmployeeAsync(EmployeeRequestModel requestModel, long id)
@@ -140,6 +117,29 @@ public class EmployeeRepository : IEmployeeRepository
 
             _appDbContext.Entry(item).State = EntityState.Modified;
 
+            return await _appDbContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    #endregion
+
+    #region Delete Employee Async
+
+    public async Task<int> DeleteEmployeeAsync(long id)
+    {
+        try
+        {
+            var item = await _appDbContext.TblEmployees
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.EmployeeId == id)
+                ?? throw new Exception("No data found.");
+
+            item.IsActive = false;
+            _appDbContext.Entry(item).State = EntityState.Modified;
             return await _appDbContext.SaveChangesAsync();
         }
         catch (Exception ex)
