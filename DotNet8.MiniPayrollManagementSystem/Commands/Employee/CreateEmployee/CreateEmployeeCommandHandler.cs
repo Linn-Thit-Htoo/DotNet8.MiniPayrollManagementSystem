@@ -5,7 +5,6 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmploy
 
 #region Create Employee Command Handler
 
-#endregion
 public class CreateEmployeeCommandHandler : IRequestHandler<CreateEmployeeCommand, int>
 {
     private readonly IEmployeeRepository _employeeRepository;
@@ -20,3 +19,4 @@ public class CreateEmployeeCommandHandler : IRequestHandler<CreateEmployeeComman
         return await _employeeRepository.CreateEmployeeAsync(request.EmployeeRequestModel);
     }
 }
+#endregion
