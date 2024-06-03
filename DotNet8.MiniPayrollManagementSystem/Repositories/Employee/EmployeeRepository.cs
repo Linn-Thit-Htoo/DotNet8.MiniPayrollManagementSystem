@@ -47,7 +47,6 @@ public class EmployeeRepository : IEmployeeRepository
 
     #region Create Employee Async
 
-    #endregion
     public async Task<int> CreateEmployeeAsync(EmployeeRequestModel requestModel)
     {
         try
@@ -72,6 +71,7 @@ public class EmployeeRepository : IEmployeeRepository
             throw new Exception(ex.Message);
         }
     }
+    #endregion
 
     public async Task<int> DeleteEmployeeAsync(long id)
     {
