@@ -20,4 +20,5 @@ public class GetPayrollListByEmployeeQueryHandler : IRequestHandler<GetPayrollLi
         return await _payrollRepository.GetPayrollListByEmployeeAsync(request.EmployeeCode, request.FromDate, request.ToDate);
     }
 }
+
 #endregion
