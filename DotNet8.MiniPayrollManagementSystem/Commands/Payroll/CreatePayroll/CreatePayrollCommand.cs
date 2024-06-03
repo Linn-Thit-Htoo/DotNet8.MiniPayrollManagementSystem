@@ -9,4 +9,5 @@ public class CreatePayrollCommand : IRequest<int>
 {
     public PayrollRequestModel PayrollRequestModel { get; set; }
 }
+
 #endregion
