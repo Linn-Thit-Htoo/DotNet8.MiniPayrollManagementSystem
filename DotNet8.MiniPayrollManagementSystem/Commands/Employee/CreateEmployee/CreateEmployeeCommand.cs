@@ -3,7 +3,7 @@ using MediatR;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
 
-#region CreateEmployeeCommand
+#region Create Employee Command
 
 #endregion
 public class CreateEmployeeCommand : IRequest<int>
