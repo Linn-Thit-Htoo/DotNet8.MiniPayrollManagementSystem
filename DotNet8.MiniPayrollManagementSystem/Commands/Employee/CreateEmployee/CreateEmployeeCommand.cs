@@ -5,8 +5,8 @@ namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmploy
 
 #region Create Employee Command
 
-#endregion
 public class CreateEmployeeCommand : IRequest<int>
 {
     public EmployeeRequestModel EmployeeRequestModel { get; set; }
 }
+#endregion
