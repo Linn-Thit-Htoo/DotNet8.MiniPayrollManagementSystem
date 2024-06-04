@@ -22,6 +22,7 @@ public class DA_Employee
         {
             var query = new GetEmployeeListQuery();
             var lst = await _mediator.Send(query);
+
             return lst;
         }
         catch (Exception ex)
