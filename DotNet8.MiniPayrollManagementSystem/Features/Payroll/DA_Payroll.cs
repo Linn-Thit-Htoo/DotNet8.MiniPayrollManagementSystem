@@ -1,9 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.CreatePayroll;
-using DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.DeletePayroll;
-using DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.UpdatePayroll;
-using DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
 
 public class DA_Payroll
 {
