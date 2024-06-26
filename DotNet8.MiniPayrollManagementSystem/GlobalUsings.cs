@@ -11,9 +11,11 @@ global using DotNet8.MiniPayrollManagementSystem.Api.Queries.Employee.GetEmploye
 global using DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery;
 global using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
 global using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
+global using DotNet8.MiniPayrollManagementSystem.Api.Services.Employee;
 global using DotNet8.MiniPayrollManagementSystem.Api.Validators.Employee;
 global using DotNet8.MiniPayrollManagementSystem.Api.Validators.Payroll;
 global using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
+global using DotNet8.MiniPayrollManagementSystem.Models;
 global using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
 global using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
 global using FluentValidation.Results;

@@ -1,7 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Api.Services.Employee;
-using DotNet8.MiniPayrollManagementSystem.Models;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
 
 public class EmployeeRepository : IEmployeeRepository
 {

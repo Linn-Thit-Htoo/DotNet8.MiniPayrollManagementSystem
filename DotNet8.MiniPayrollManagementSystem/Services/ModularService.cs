@@ -1,6 +1,5 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
 using DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
-using DotNet8.MiniPayrollManagementSystem.Api.Services.Employee;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Services;
 
