@@ -1,6 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Api.Validators.Payroll;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
 
 public class BL_Payroll
 {
