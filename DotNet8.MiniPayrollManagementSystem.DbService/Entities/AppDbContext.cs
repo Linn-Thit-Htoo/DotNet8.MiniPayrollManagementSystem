@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace DotNet8.MiniPayrollManagementSystem.DbService.Entities;
+﻿namespace DotNet8.MiniPayrollManagementSystem.DbService.Entities;
 
 public partial class AppDbContext : DbContext
 {
