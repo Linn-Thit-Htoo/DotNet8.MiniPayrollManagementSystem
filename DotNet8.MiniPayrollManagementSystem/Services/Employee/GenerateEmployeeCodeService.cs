@@ -13,8 +13,8 @@ public class GenerateEmployeeCodeService
     {
         try
         {
-            var latestEmployeeCode = await _appDbContext.TblEmployees
-                .AsNoTracking()
+            var latestEmployeeCode = await _appDbContext
+                .TblEmployees.AsNoTracking()
                 .OrderByDescending(x => x.EmployeeCode)
                 .Select(x => x.EmployeeCode)
                 .FirstOrDefaultAsync();
