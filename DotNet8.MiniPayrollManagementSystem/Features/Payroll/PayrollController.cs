@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
 
 [Route("api/[controller]")]
 [ApiController]
