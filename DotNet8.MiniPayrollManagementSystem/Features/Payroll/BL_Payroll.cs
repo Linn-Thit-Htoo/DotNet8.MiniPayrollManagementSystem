@@ -11,7 +11,11 @@ public class BL_Payroll
         this._payrollValidator = payrollValidator;
     }
 
-    public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(string employeeCode, string? fromDate = "", string? toDate = "")
+    public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(
+        string employeeCode,
+        string? fromDate = "",
+        string? toDate = ""
+    )
     {
         if (string.IsNullOrEmpty(employeeCode))
             throw new Exception("Employee Code cannot be empty.");
@@ -40,7 +44,6 @@ public class BL_Payroll
 
         return await _dA_Payroll.UpdatePayrollAsync(requestModel, pId);
     }
-
 
     public async Task<int> DeletePayrollAsync(string pId)
     {
