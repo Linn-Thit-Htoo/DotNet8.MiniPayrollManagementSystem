@@ -13,7 +13,10 @@ public class UpdatePayrollCommandHandler : IRequestHandler<UpdatePayrollCommand,
 
     public async Task<int> Handle(UpdatePayrollCommand request, CancellationToken cancellationToken)
     {
-        return await _payrollRepository.UpdatePayrollAsync(request.PayrollRequestModel, request.PId);
+        return await _payrollRepository.UpdatePayrollAsync(
+            request.PayrollRequestModel,
+            request.PId
+        );
     }
 }
 
