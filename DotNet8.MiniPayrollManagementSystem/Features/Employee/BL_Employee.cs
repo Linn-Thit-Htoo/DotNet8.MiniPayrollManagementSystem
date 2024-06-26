@@ -6,7 +6,11 @@ public class BL_Employee
     private readonly EmployeeValidator _employeeValidator;
     private readonly AppDbContext _appDbContext;
 
-    public BL_Employee(DA_Employee dA_Employee, EmployeeValidator employeeValidator, AppDbContext appDbContext)
+    public BL_Employee(
+        DA_Employee dA_Employee,
+        EmployeeValidator employeeValidator,
+        AppDbContext appDbContext
+    )
     {
         _dA_Employee = dA_Employee;
         _employeeValidator = employeeValidator;
@@ -29,8 +33,8 @@ public class BL_Employee
             throw new Exception(errors.ToString());
         }
 
-        bool isEmailDuplicate = await _appDbContext.TblEmployees
-            .AsNoTracking()
+        bool isEmailDuplicate = await _appDbContext
+            .TblEmployees.AsNoTracking()
             .AnyAsync(x => x.Email == requestModel.Email && x.IsActive);
         if (isEmailDuplicate)
             throw new Exception("Employee with this email already exists.");
@@ -43,9 +47,9 @@ public class BL_Employee
         if (id <= 0)
             throw new Exception("Id cannot be empty.");
 
-        bool isEmailDuplicate = await _appDbContext.TblEmployees
-           .AsNoTracking()
-           .AnyAsync(x => x.Email == requestModel.Email && x.IsActive && x.EmployeeId != id);
+        bool isEmailDuplicate = await _appDbContext
+            .TblEmployees.AsNoTracking()
+            .AnyAsync(x => x.Email == requestModel.Email && x.IsActive && x.EmployeeId != id);
         if (isEmailDuplicate)
             throw new Exception("Employee with this email already exists.");
 
