@@ -2,7 +2,8 @@
 
 #region Get Employee List Query Handler
 
-public class GetEmployeeListQueryHandler : IRequestHandler<GetEmployeeListQuery, EmployeeListResponseModel>
+public class GetEmployeeListQueryHandler
+    : IRequestHandler<GetEmployeeListQuery, EmployeeListResponseModel>
 {
     private readonly IEmployeeRepository _employeeRepository;
 
@@ -11,7 +12,10 @@ public class GetEmployeeListQueryHandler : IRequestHandler<GetEmployeeListQuery,
         _employeeRepository = employeeRepository;
     }
 
-    public async Task<EmployeeListResponseModel> Handle(GetEmployeeListQuery request, CancellationToken cancellationToken)
+    public async Task<EmployeeListResponseModel> Handle(
+        GetEmployeeListQuery request,
+        CancellationToken cancellationToken
+    )
     {
         return await _employeeRepository.GetEmployeeListAsync();
     }
