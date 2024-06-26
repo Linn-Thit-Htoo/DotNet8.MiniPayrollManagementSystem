@@ -1,6 +1,10 @@
 // Global using directives
 
 global using System.Text;
+global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
+global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.DeleteEmployee;
+global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.UpdateEmployee;
+global using DotNet8.MiniPayrollManagementSystem.Api.Queries.Employee.GetEmployeeListQuery;
 global using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
 global using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
 global using DotNet8.MiniPayrollManagementSystem.Api.Validators.Employee;

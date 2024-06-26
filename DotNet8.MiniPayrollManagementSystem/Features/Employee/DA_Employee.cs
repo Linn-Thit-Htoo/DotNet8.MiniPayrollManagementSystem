@@ -1,9 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
-using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.DeleteEmployee;
-using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.UpdateEmployee;
-using DotNet8.MiniPayrollManagementSystem.Api.Queries.Employee.GetEmployeeListQuery;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
 
 public class DA_Employee
 {
