@@ -24,6 +24,7 @@ global using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
 global using DotNet8.MiniPayrollManagementSystem.Models;
 global using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
 global using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
+global using FluentValidation;
 global using FluentValidation.Results;
 global using MediatR;
 global using Microsoft.AspNetCore.Mvc;

@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Validators.Employee;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Validators.Employee;
 
 public class EmployeeValidator : AbstractValidator<EmployeeRequestModel>
 {
