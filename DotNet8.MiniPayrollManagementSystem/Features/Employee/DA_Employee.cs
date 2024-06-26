@@ -54,7 +54,11 @@ public class DA_Employee
     {
         try
         {
-            var command = new UpdateEmployeeCommand() { EmployeeId = id, EmployeeRequestModel = requestModel };
+            var command = new UpdateEmployeeCommand()
+            {
+                EmployeeId = id,
+                EmployeeRequestModel = requestModel
+            };
             return await _mediator.Send(command);
         }
         catch (Exception ex)
