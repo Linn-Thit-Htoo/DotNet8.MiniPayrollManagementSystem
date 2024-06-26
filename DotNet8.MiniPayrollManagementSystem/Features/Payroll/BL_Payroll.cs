@@ -1,5 +1,4 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Validators.Payroll;
-using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
 using FluentValidation.Results;
 using System.Text;
 

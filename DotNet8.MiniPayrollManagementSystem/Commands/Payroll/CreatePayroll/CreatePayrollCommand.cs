@@ -1,6 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.CreatePayroll;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.CreatePayroll;
 
 #region Create Payroll Command
 

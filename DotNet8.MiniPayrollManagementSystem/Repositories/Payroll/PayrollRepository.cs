@@ -1,7 +1,6 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Services;
 using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
 using DotNet8.MiniPayrollManagementSystem.Models;
-using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
