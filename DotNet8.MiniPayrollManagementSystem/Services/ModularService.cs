@@ -2,9 +2,13 @@
 
 public static class ModularService
 {
-    public static IServiceCollection AddServices(this IServiceCollection services, WebApplicationBuilder builder)
+    public static IServiceCollection AddServices(
+        this IServiceCollection services,
+        WebApplicationBuilder builder
+    )
     {
-        services.AddDbContextServices(builder)
+        services
+            .AddDbContextServices(builder)
             .AddMediatRService()
             .AddDataAccessServices()
             .AddBusinessLogicServices()
@@ -20,8 +24,7 @@ public static class ModularService
 
     private static IServiceCollection AddBusinessLogicServices(this IServiceCollection services)
     {
-        services.AddScoped<BL_Employee>()
-            .AddScoped<BL_Payroll>();
+        services.AddScoped<BL_Employee>().AddScoped<BL_Payroll>();
 
         return services;
     }
@@ -32,8 +35,7 @@ public static class ModularService
 
     private static IServiceCollection AddDataAccessServices(this IServiceCollection services)
     {
-        services.AddScoped<DA_Employee>()
-            .AddScoped<DA_Payroll>();
+        services.AddScoped<DA_Employee>().AddScoped<DA_Payroll>();
 
         return services;
     }
@@ -42,12 +44,18 @@ public static class ModularService
 
     #region Add Db Context Services
 
-    private static IServiceCollection AddDbContextServices(this IServiceCollection services, WebApplicationBuilder builder)
+    private static IServiceCollection AddDbContextServices(
+        this IServiceCollection services,
+        WebApplicationBuilder builder
+    )
     {
-        builder.Services.AddDbContext<AppDbContext>(opt =>
-        {
-            opt.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
-        }, ServiceLifetime.Transient);
+        builder.Services.AddDbContext<AppDbContext>(
+            opt =>
+            {
+                opt.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
+            },
+            ServiceLifetime.Transient
+        );
 
         return services;
     }
@@ -58,7 +66,8 @@ public static class ModularService
 
     private static IServiceCollection AddRepositoryServices(this IServiceCollection services)
     {
-        services.AddScoped<IEmployeeRepository, EmployeeRepository>()
+        services
+            .AddScoped<IEmployeeRepository, EmployeeRepository>()
             .AddScoped<IPayrollRepository, PayrollRepository>();
 
         return services;
@@ -70,10 +79,12 @@ public static class ModularService
 
     private static IServiceCollection AddJsonServices(this IServiceCollection services)
     {
-        services.AddControllers().AddJsonOptions(opt =>
-        {
-            opt.JsonSerializerOptions.PropertyNamingPolicy = null;
-        });
+        services
+            .AddControllers()
+            .AddJsonOptions(opt =>
+            {
+                opt.JsonSerializerOptions.PropertyNamingPolicy = null;
+            });
         return services;
     }
 
@@ -91,16 +102,14 @@ public static class ModularService
 
     private static IServiceCollection AddCustomServices(this IServiceCollection services)
     {
-        services.AddScoped<GenerateEmployeeCodeService>()
-            .AddScoped<DapperService>();
+        services.AddScoped<GenerateEmployeeCodeService>().AddScoped<DapperService>();
 
         return services;
     }
 
     private static IServiceCollection AddValidatorService(this IServiceCollection services)
     {
-        services.AddScoped<EmployeeValidator>()
-            .AddScoped<PayrollValidator>();
+        services.AddScoped<EmployeeValidator>().AddScoped<PayrollValidator>();
 
         return services;
     }
