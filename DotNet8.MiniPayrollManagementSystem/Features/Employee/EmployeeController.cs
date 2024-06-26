@@ -40,7 +40,10 @@ public class EmployeeController : BaseController
     }
 
     [HttpPatch("{id}")]
-    public async Task<IActionResult> UpdateEmployee([FromBody] EmployeeRequestModel requestModel, long id)
+    public async Task<IActionResult> UpdateEmployee(
+        [FromBody] EmployeeRequestModel requestModel,
+        long id
+    )
     {
         try
         {
