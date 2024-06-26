@@ -1,6 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery;
 
 #region Get Payroll List By Employee Query Handler
 
