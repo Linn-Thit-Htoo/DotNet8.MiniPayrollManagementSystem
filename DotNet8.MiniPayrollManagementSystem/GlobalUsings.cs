@@ -1,7 +1,9 @@
 // Global using directives
 
 global using System.Data;
+global using System.Data.SqlClient;
 global using System.Text;
+global using Dapper;
 global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
 global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.DeleteEmployee;
 global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.UpdateEmployee;

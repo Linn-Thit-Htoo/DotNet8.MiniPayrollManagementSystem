@@ -1,7 +1,4 @@
-﻿using Dapper;
-using System.Data.SqlClient;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Services;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Services;
 
 public class DapperService
 {
