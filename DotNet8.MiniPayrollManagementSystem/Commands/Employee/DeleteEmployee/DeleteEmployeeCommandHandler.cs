@@ -1,6 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.DeleteEmployee;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.DeleteEmployee;
 
 #region Delete Employee Command Handler
 

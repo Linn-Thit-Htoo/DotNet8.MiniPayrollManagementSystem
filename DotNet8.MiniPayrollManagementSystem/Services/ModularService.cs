@@ -1,6 +1,5 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
 using DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
-using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
 using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
 using DotNet8.MiniPayrollManagementSystem.Api.Services.Employee;
 using DotNet8.MiniPayrollManagementSystem.Api.Validators.Employee;

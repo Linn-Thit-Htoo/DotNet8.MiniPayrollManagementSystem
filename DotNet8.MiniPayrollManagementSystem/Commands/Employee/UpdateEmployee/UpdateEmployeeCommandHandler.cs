@@ -1,6 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.UpdateEmployee;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.UpdateEmployee;
 
 #region Update Employee Command Handler
 

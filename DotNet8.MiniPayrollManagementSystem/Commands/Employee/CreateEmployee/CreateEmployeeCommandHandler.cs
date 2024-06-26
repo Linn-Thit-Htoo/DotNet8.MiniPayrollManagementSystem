@@ -1,6 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
 
 #region Create Employee Command Handler
 
