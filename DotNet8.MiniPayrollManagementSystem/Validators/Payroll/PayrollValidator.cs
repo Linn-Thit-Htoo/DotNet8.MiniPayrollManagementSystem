@@ -4,7 +4,10 @@ public class PayrollValidator : AbstractValidator<PayrollRequestModel>
 {
     public PayrollValidator()
     {
-        RuleFor(x => x.EmployeeName).NotEmpty().NotNull().WithMessage("Employee Name cannot be empty.");
+        RuleFor(x => x.EmployeeName)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage("Employee Name cannot be empty.");
         RuleFor(x => x.PayDate).NotEmpty().NotNull().WithMessage("Pay Date cannot be empty.");
         RuleFor(x => x.GrossPay).NotEmpty().NotNull().WithMessage("Gross Pay cannot be empty.");
         RuleFor(x => x.NetPay).NotEmpty().NotNull().WithMessage("Net Pay cannot be empty.");
