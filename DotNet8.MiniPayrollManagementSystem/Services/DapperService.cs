@@ -11,9 +11,15 @@ public class DapperService
 
     #region Query
 
-    public List<T> Query<T>(string query, object? parameters, CommandType commandType = CommandType.Text)
+    public List<T> Query<T>(
+        string query,
+        object? parameters,
+        CommandType commandType = CommandType.Text
+    )
     {
-        using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
+        using IDbConnection db = new SqlConnection(
+            _configuration.GetConnectionString("DbConnection")
+        );
         List<T> lst = db.Query<T>(query, parameters, commandType: commandType).ToList();
 
         return lst;
@@ -23,9 +29,15 @@ public class DapperService
 
     #region Query Async
 
-    public async Task<IEnumerable<T>> QueryAsync<T>(string query, object? parameters, CommandType commandType = CommandType.Text)
+    public async Task<IEnumerable<T>> QueryAsync<T>(
+        string query,
+        object? parameters,
+        CommandType commandType = CommandType.Text
+    )
     {
-        using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
+        using IDbConnection db = new SqlConnection(
+            _configuration.GetConnectionString("DbConnection")
+        );
         IEnumerable<T> lst = await db.QueryAsync<T>(query, parameters, commandType: commandType);
 
         return lst;
@@ -35,9 +47,15 @@ public class DapperService
 
     #region Query First Or Default
 
-    public T QueryFirstOrDefault<T>(string query, object? parameters, CommandType commandType = CommandType.Text)
+    public T QueryFirstOrDefault<T>(
+        string query,
+        object? parameters,
+        CommandType commandType = CommandType.Text
+    )
     {
-        using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
+        using IDbConnection db = new SqlConnection(
+            _configuration.GetConnectionString("DbConnection")
+        );
         T? item = db.QueryFirstOrDefault<T>(query, parameters, commandType: commandType);
 
         return item!;
@@ -47,9 +65,15 @@ public class DapperService
 
     #region Query First Or Default Async
 
-    public async Task<T> QueryFirstOrDefaultAsync<T>(string query, object? parameters, CommandType commandType = CommandType.Text)
+    public async Task<T> QueryFirstOrDefaultAsync<T>(
+        string query,
+        object? parameters,
+        CommandType commandType = CommandType.Text
+    )
     {
-        using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
+        using IDbConnection db = new SqlConnection(
+            _configuration.GetConnectionString("DbConnection")
+        );
         T? item = await db.QueryFirstOrDefaultAsync<T>(query, parameters, commandType: commandType);
 
         return item!;
@@ -61,7 +85,9 @@ public class DapperService
 
     public int Execute(string query, object? parameters, CommandType commandType = CommandType.Text)
     {
-        using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
+        using IDbConnection db = new SqlConnection(
+            _configuration.GetConnectionString("DbConnection")
+        );
         return db.Execute(query, parameters, commandType: commandType);
     }
 
@@ -69,9 +95,15 @@ public class DapperService
 
     #region Execute Async
 
-    public async Task<int> ExecuteAsync(string query, object? parameters, CommandType commandType = CommandType.Text)
+    public async Task<int> ExecuteAsync(
+        string query,
+        object? parameters,
+        CommandType commandType = CommandType.Text
+    )
     {
-        using IDbConnection db = new SqlConnection(_configuration.GetConnectionString("DbConnection"));
+        using IDbConnection db = new SqlConnection(
+            _configuration.GetConnectionString("DbConnection")
+        );
         return await db.ExecuteAsync(query, parameters, commandType: commandType);
     }
 
