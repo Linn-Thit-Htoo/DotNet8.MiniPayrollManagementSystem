@@ -5,7 +5,10 @@ public class EmployeeRepository : IEmployeeRepository
     private readonly AppDbContext _appDbContext;
     private readonly GenerateEmployeeCodeService _generateEmployeeCodeService;
 
-    public EmployeeRepository(AppDbContext appDbContext, GenerateEmployeeCodeService generateEmployeeCodeService)
+    public EmployeeRepository(
+        AppDbContext appDbContext,
+        GenerateEmployeeCodeService generateEmployeeCodeService
+    )
     {
         _appDbContext = appDbContext;
         _generateEmployeeCodeService = generateEmployeeCodeService;
@@ -17,17 +20,14 @@ public class EmployeeRepository : IEmployeeRepository
     {
         try
         {
-            var employees = await _appDbContext.TblEmployees
-                .AsNoTracking()
+            var employees = await _appDbContext
+                .TblEmployees.AsNoTracking()
                 .OrderByDescending(x => x.EmployeeId)
                 .Where(x => x.IsActive)
                 .ToListAsync();
 
             var lst = employees.Select(x => x.Change()).ToList();
-            var responseModel = new EmployeeListResponseModel()
-            {
-                DataLst = lst
-            };
+            var responseModel = new EmployeeListResponseModel() { DataLst = lst };
 
             return responseModel;
         }
@@ -74,9 +74,10 @@ public class EmployeeRepository : IEmployeeRepository
     {
         try
         {
-            var item = await _appDbContext.TblEmployees
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.EmployeeId == id && x.IsActive)
+            var item =
+                await _appDbContext
+                    .TblEmployees.AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.EmployeeId == id && x.IsActive)
                 ?? throw new Exception("No data found.");
 
             if (!string.IsNullOrEmpty(requestModel.EmployeeName))
@@ -127,9 +128,10 @@ public class EmployeeRepository : IEmployeeRepository
     {
         try
         {
-            var item = await _appDbContext.TblEmployees
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.EmployeeId == id)
+            var item =
+                await _appDbContext
+                    .TblEmployees.AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.EmployeeId == id)
                 ?? throw new Exception("No data found.");
 
             item.IsActive = false;
