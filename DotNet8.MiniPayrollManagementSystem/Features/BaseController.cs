@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Features;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Features;
 
 [Route("api/[controller]")]
 [ApiController]
