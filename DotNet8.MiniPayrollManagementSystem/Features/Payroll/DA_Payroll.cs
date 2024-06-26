@@ -9,7 +9,11 @@ public class DA_Payroll
         _mediator = mediator;
     }
 
-    public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(string employeeCode, string? fromDate = "", string? toDate = "")
+    public async Task<IEnumerable<PayrollResponseModel>> GetPayrollByEmployeeAsync(
+        string employeeCode,
+        string? fromDate = "",
+        string? toDate = ""
+    )
     {
         try
         {
@@ -44,7 +48,11 @@ public class DA_Payroll
     {
         try
         {
-            var command = new UpdatePayrollCommand() { PayrollRequestModel = requestModel, PId = pId };
+            var command = new UpdatePayrollCommand()
+            {
+                PayrollRequestModel = requestModel,
+                PId = pId
+            };
             return await _mediator.Send(command);
         }
         catch (Exception ex)
