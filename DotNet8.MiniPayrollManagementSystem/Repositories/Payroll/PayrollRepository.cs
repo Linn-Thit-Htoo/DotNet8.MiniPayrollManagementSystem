@@ -1,7 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Api.Services;
-using System.Data;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
 
 public class PayrollRepository : IPayrollRepository
 {

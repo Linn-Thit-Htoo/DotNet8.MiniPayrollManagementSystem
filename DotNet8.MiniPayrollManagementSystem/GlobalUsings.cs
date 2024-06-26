@@ -1,5 +1,6 @@
 // Global using directives
 
+global using System.Data;
 global using System.Text;
 global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
 global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.DeleteEmployee;
@@ -11,6 +12,7 @@ global using DotNet8.MiniPayrollManagementSystem.Api.Queries.Employee.GetEmploye
 global using DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery;
 global using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
 global using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
+global using DotNet8.MiniPayrollManagementSystem.Api.Services;
 global using DotNet8.MiniPayrollManagementSystem.Api.Services.Employee;
 global using DotNet8.MiniPayrollManagementSystem.Api.Validators.Employee;
 global using DotNet8.MiniPayrollManagementSystem.Api.Validators.Payroll;

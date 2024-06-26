@@ -1,5 +1,3 @@
-using DotNet8.MiniPayrollManagementSystem.Api.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
