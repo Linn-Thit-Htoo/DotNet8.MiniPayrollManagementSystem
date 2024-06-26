@@ -1,7 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
-using DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Services;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Services;
 
 public static class ModularService
 {

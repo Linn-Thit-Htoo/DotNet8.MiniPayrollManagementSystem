@@ -10,6 +10,8 @@ global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.UpdateEmp
 global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.CreatePayroll;
 global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.DeletePayroll;
 global using DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.UpdatePayroll;
+global using DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
+global using DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
 global using DotNet8.MiniPayrollManagementSystem.Api.Queries.Employee.GetEmployeeListQuery;
 global using DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery;
 global using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Employee;
