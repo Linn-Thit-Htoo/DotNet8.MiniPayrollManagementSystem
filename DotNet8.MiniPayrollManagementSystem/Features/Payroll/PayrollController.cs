@@ -12,7 +12,11 @@ public class PayrollController : BaseController
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetPayrollListByEmployee(string employeeCode, string? fromDate = "", string? toDate = "")
+    public async Task<IActionResult> GetPayrollListByEmployee(
+        string employeeCode,
+        string? fromDate = "",
+        string? toDate = ""
+    )
     {
         try
         {
@@ -40,7 +44,10 @@ public class PayrollController : BaseController
     }
 
     [HttpPatch("{pId}")]
-    public async Task<IActionResult> UpdatePayroll([FromBody] PayrollRequestModel requestModel, string pId)
+    public async Task<IActionResult> UpdatePayroll(
+        [FromBody] PayrollRequestModel requestModel,
+        string pId
+    )
     {
         try
         {
