@@ -11,7 +11,10 @@ public class CreateEmployeeCommandHandler : IRequestHandler<CreateEmployeeComman
         _employeeRepository = employeeRepository;
     }
 
-    public async Task<int> Handle(CreateEmployeeCommand request, CancellationToken cancellationToken)
+    public async Task<int> Handle(
+        CreateEmployeeCommand request,
+        CancellationToken cancellationToken
+    )
     {
         return await _employeeRepository.CreateEmployeeAsync(request.EmployeeRequestModel);
     }
