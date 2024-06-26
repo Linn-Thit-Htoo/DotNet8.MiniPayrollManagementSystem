@@ -2,8 +2,6 @@
 
 #region Get Employee List Query
 
-public class GetEmployeeListQuery : IRequest<EmployeeListResponseModel>
-{
-}
+public class GetEmployeeListQuery : IRequest<EmployeeListResponseModel> { }
 
 #endregion
