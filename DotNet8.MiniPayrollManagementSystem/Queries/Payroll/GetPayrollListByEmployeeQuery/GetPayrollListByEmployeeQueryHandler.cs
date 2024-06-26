@@ -1,6 +1,5 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
-using MediatR;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery;
 

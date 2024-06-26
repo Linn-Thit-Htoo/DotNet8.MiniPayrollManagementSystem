@@ -1,7 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
-using MediatR;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.CreateEmployee;
 
 #region Create Employee Command
 

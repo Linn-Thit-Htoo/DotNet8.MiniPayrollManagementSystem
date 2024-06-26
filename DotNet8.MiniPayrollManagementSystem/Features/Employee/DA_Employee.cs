@@ -2,8 +2,6 @@
 using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.DeleteEmployee;
 using DotNet8.MiniPayrollManagementSystem.Api.Commands.Employee.UpdateEmployee;
 using DotNet8.MiniPayrollManagementSystem.Api.Queries.Employee.GetEmployeeListQuery;
-using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
-using MediatR;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
 

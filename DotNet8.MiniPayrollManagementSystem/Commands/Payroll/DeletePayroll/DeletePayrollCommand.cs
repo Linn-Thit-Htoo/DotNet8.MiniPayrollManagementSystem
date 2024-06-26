@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.DeletePayroll;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.DeletePayroll;
 
 #region Delete Payroll Command
 

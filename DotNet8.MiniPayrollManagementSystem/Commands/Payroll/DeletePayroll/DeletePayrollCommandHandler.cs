@@ -1,5 +1,4 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Repositories.Payroll;
-using MediatR;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.DeletePayroll;
 

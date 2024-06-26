@@ -1,6 +1,5 @@
 ﻿using DotNet8.MiniPayrollManagementSystem.Api.Validators.Employee;
 using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
-using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using System.Text;

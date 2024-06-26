@@ -3,7 +3,6 @@ using DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.DeletePayroll;
 using DotNet8.MiniPayrollManagementSystem.Api.Commands.Payroll.UpdatePayroll;
 using DotNet8.MiniPayrollManagementSystem.Api.Queries.Payroll.GetPayrollListByEmployeeQuery;
 using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
-using MediatR;
 
 namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Payroll;
 
