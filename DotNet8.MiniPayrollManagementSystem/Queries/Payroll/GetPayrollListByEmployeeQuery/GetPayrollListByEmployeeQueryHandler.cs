@@ -2,7 +2,8 @@
 
 #region Get Payroll List By Employee Query Handler
 
-public class GetPayrollListByEmployeeQueryHandler : IRequestHandler<GetPayrollListByEmployeeQuery, IEnumerable<PayrollResponseModel>>
+public class GetPayrollListByEmployeeQueryHandler
+    : IRequestHandler<GetPayrollListByEmployeeQuery, IEnumerable<PayrollResponseModel>>
 {
     private readonly IPayrollRepository _payrollRepository;
 
@@ -11,9 +12,16 @@ public class GetPayrollListByEmployeeQueryHandler : IRequestHandler<GetPayrollLi
         _payrollRepository = payrollRepository;
     }
 
-    public async Task<IEnumerable<PayrollResponseModel>> Handle(GetPayrollListByEmployeeQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<PayrollResponseModel>> Handle(
+        GetPayrollListByEmployeeQuery request,
+        CancellationToken cancellationToken
+    )
     {
-        return await _payrollRepository.GetPayrollListByEmployeeAsync(request.EmployeeCode, request.FromDate, request.ToDate);
+        return await _payrollRepository.GetPayrollListByEmployeeAsync(
+            request.EmployeeCode,
+            request.FromDate,
+            request.ToDate
+        );
     }
 }
 
