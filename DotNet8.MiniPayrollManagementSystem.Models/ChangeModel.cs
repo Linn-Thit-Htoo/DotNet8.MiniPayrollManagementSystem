@@ -1,8 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
-using DotNet8.MiniPayrollManagementSystem.Models.Setup.Employee;
-using DotNet8.MiniPayrollManagementSystem.Models.Setup.Payroll;
-
-namespace DotNet8.MiniPayrollManagementSystem.Models;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Models;
 
 public static class ChangeModel
 {
