@@ -11,7 +11,10 @@ public class DeleteEmployeeCommandHandler : IRequestHandler<DeleteEmployeeComman
         _employeeRepository = employeeRepository;
     }
 
-    public async Task<int> Handle(DeleteEmployeeCommand request, CancellationToken cancellationToken)
+    public async Task<int> Handle(
+        DeleteEmployeeCommand request,
+        CancellationToken cancellationToken
+    )
     {
         return await _employeeRepository.DeleteEmployeeAsync(request.EmployeeId);
     }
