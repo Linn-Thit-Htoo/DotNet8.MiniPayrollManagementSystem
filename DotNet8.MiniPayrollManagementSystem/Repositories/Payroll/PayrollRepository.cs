@@ -11,7 +11,11 @@ public class PayrollRepository : IPayrollRepository
         _dapperService = dapperService;
     }
 
-    public async Task<IEnumerable<PayrollResponseModel>> GetPayrollListByEmployeeAsync(string employeeCode, string fromDate, string toDate)
+    public async Task<IEnumerable<PayrollResponseModel>> GetPayrollListByEmployeeAsync(
+        string employeeCode,
+        string fromDate,
+        string toDate
+    )
     {
         try
         {
@@ -28,9 +32,11 @@ public class PayrollRepository : IPayrollRepository
                     FromDate = fromDate,
                     ToDate = toDate
                 };
-                lst = await _dapperService
-                   .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByFromDateToDateWithEmployeeCode", parameters,
-                   commandType: CommandType.StoredProcedure);
+                lst = await _dapperService.QueryAsync<PayrollResponseModel>(
+                    "Sp_FilterPayrollByFromDateToDateWithEmployeeCode",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
             }
 
             #endregion
@@ -39,14 +45,12 @@ public class PayrollRepository : IPayrollRepository
 
             if (!string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
             {
-                var parameters = new
-                {
-                    EmployeeCode = employeeCode,
-                    FromDate = fromDate
-                };
-                lst = await _dapperService
-                   .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByFromDateWithEmployeeCode", parameters,
-                   commandType: CommandType.StoredProcedure);
+                var parameters = new { EmployeeCode = employeeCode, FromDate = fromDate };
+                lst = await _dapperService.QueryAsync<PayrollResponseModel>(
+                    "Sp_FilterPayrollByFromDateWithEmployeeCode",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
             }
 
             #endregion
@@ -55,14 +59,12 @@ public class PayrollRepository : IPayrollRepository
 
             if (!string.IsNullOrEmpty(toDate) && string.IsNullOrEmpty(fromDate))
             {
-                var parameters = new
-                {
-                    EmployeeCode = employeeCode,
-                    ToDate = toDate,
-                };
-                lst = await _dapperService
-                   .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByToDateWithEmployeeCode", parameters,
-                   commandType: CommandType.StoredProcedure);
+                var parameters = new { EmployeeCode = employeeCode, ToDate = toDate, };
+                lst = await _dapperService.QueryAsync<PayrollResponseModel>(
+                    "Sp_FilterPayrollByToDateWithEmployeeCode",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
             }
 
             #endregion
@@ -71,10 +73,11 @@ public class PayrollRepository : IPayrollRepository
 
             if (string.IsNullOrEmpty(fromDate) && string.IsNullOrEmpty(toDate))
             {
-                lst = await _dapperService
-                    .QueryAsync<PayrollResponseModel>("Sp_FilterPayrollByEmployeeCode"
-                    , new { EmployeeCode = employeeCode },
-                    commandType: CommandType.StoredProcedure);
+                lst = await _dapperService.QueryAsync<PayrollResponseModel>(
+                    "Sp_FilterPayrollByEmployeeCode",
+                    new { EmployeeCode = employeeCode },
+                    commandType: CommandType.StoredProcedure
+                );
             }
 
             #endregion
@@ -91,8 +94,8 @@ public class PayrollRepository : IPayrollRepository
     {
         try
         {
-            bool doesEmployeeExist = await _appDbContext.TblEmployees
-                .AsNoTracking()
+            bool doesEmployeeExist = await _appDbContext
+                .TblEmployees.AsNoTracking()
                 .AnyAsync(x => x.EmployeeName == requestModel.EmployeeName!.Trim() && x.IsActive);
             if (!doesEmployeeExist)
                 throw new Exception("Employee with this name does not exist.");
@@ -110,18 +113,21 @@ public class PayrollRepository : IPayrollRepository
     {
         try
         {
-            var item = await _appDbContext.TblPayrolls
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.PId == pId && x.IsActive)
+            var item =
+                await _appDbContext
+                    .TblPayrolls.AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.PId == pId && x.IsActive)
                 ?? throw new Exception("No data found.");
 
             if (!string.IsNullOrEmpty(requestModel.EmployeeName))
             {
                 item.EmployeeName = requestModel.EmployeeName;
-                var employee = await _appDbContext.TblEmployees
-                    .AsNoTracking()
-                    .FirstOrDefaultAsync(x => x.EmployeeName == requestModel.EmployeeName && x.IsActive)
-                    ?? throw new Exception("Employee does not exist.");
+                var employee =
+                    await _appDbContext
+                        .TblEmployees.AsNoTracking()
+                        .FirstOrDefaultAsync(x =>
+                            x.EmployeeName == requestModel.EmployeeName && x.IsActive
+                        ) ?? throw new Exception("Employee does not exist.");
             }
 
             #region Patch Method Validation
@@ -172,9 +178,10 @@ public class PayrollRepository : IPayrollRepository
     {
         try
         {
-            var item = await _appDbContext.TblPayrolls
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.PId == pId)
+            var item =
+                await _appDbContext
+                    .TblPayrolls.AsNoTracking()
+                    .FirstOrDefaultAsync(x => x.PId == pId)
                 ?? throw new Exception("No data found.");
 
             item.IsActive = false;
