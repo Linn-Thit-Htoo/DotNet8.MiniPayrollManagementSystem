@@ -1,10 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.Api.Validators.Employee;
-using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
-using FluentValidation.Results;
-using Microsoft.EntityFrameworkCore;
-using System.Text;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Features.Employee;
 
 public class BL_Employee
 {

@@ -1,7 +1,4 @@
-﻿using DotNet8.MiniPayrollManagementSystem.DbService.Entities;
-using Microsoft.EntityFrameworkCore;
-
-namespace DotNet8.MiniPayrollManagementSystem.Api.Services.Employee;
+﻿namespace DotNet8.MiniPayrollManagementSystem.Api.Services.Employee;
 
 public class GenerateEmployeeCodeService
 {
