@@ -2,6 +2,8 @@
 
 public static class ModularService
 {
+    #region Add Services
+
     public static IServiceCollection AddServices(
         this IServiceCollection services,
         WebApplicationBuilder builder
@@ -19,6 +21,8 @@ public static class ModularService
 
         return services;
     }
+
+    #endregion
 
     #region Add Business Logic Services
 
